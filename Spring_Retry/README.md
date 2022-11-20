@@ -1,0 +1,4 @@
+<h1> Spring Retry </h1> <br>
+<p> Spring Retry provides an ability to automatically re-invoke a failed operation. This is helpful where the errors may be transient (like a momentary network glitch). </p> <br>
+<p> To make processing more robust and less prone to failure, it sometimes helps to automatically retry a failed operation in case it might succeed on a subsequent attempt. Errors that are susceptible to intermittent failure are often transient in nature. Examples include remote calls to a web service that fails because of a network glitch or a DeadlockLoserDataAccessException in a database update. </p>
+<a href="https://docs.spring.io/spring-batch/docs/current/reference/html/retry.html">docs spring.io</a>
