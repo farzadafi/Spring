@@ -1,9 +1,9 @@
 package com.example.spring_security.config;
 
-import com.example.SpringSecurity.jwt.JwtConfig;
-import com.example.SpringSecurity.jwt.JwtTokenVerifier;
-import com.example.SpringSecurity.jwt.JwtUsernameAndPasswordAuthenticationFilter;
-import com.example.SpringSecurity.repository.UserRepository;
+import com.example.spring_security.jwt.JwtConfig;
+import com.example.spring_security.jwt.JwtTokenVerifier;
+import com.example.spring_security.jwt.JwtUsernameAndPasswordAuthenticationFilter;
+import com.example.spring_security.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
