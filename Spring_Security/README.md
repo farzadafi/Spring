@@ -7,4 +7,7 @@
 **Spring Security** is a framework that focuses on providing both authentication and authorization to Java applications. Like all Spring projects, the real power of Spring Security is found in how easily it can be extended to meet custom requirements
 
 <a href="https://spring.io/projects/spring-security">docs spring.io</a>
+<hr>
 
+**JWT(JSON Web Tokens)** are an open, industry standard RFC 7519 method for representing claims securely between two parties.
+<a href="https://jwt.io/introduction">introduction jwt.io</a>
