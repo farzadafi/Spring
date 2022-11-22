@@ -8,5 +8,6 @@
 <a href="https://spring.io/projects/spring-security">docs spring.io</a>
 <hr>
 <img src="https://www.devonblog.com/wp-content/uploads/2018/08/jwt_05.jpg" alt="JWT_image" height="100"> <br>
+
 **JWT(JSON Web Tokens)** are an open, industry standard RFC 7519 method for representing claims securely between two parties.
 <a href="https://jwt.io/introduction">introduction jwt.io</a>
