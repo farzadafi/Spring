@@ -15,6 +15,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.jdbc.datasource.init.ScriptUtils;
 import org.springframework.mock.web.MockHttpServletResponse;
+import org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
@@ -67,7 +68,16 @@ class UserControllerTest {
     }
 
     @Test
-    void userWriteTest() {
+    @Order(2)
+    void userWriteTest() throws Exception {
+        RequestBuilder requestBuilder = MockMvcRequestBuilders
+                .put("/api/v1/user/userWriteTest")
+                .with(SecurityMockMvcRequestPostProcessors.user(admin))
+                .contentType(MediaType.APPLICATION_JSON);
+        MvcResult result = mockMvc.perform(requestBuilder).andReturn();
+        MockHttpServletResponse response = result.getResponse();
+
+        assertEquals(HttpStatus.OK.value(), response.getStatus());
     }
 
     @Test
