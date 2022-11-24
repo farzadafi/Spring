@@ -81,6 +81,15 @@ class UserControllerTest {
     }
 
     @Test
-    void userReadTest() {
+    @Order(3)
+    void userReadTest() throws Exception {
+        RequestBuilder requestBuilder = MockMvcRequestBuilders
+                .get("/api/v1/user/userReadTest")
+                .with(SecurityMockMvcRequestPostProcessors.user(admin))
+                .contentType(MediaType.APPLICATION_JSON);
+        MvcResult result = mockMvc.perform(requestBuilder).andReturn();
+        MockHttpServletResponse response = result.getResponse();
+
+        assertEquals(HttpStatus.OK.value(), response.getStatus());
     }
 }
