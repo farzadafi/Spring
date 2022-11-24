@@ -5,10 +5,7 @@ import com.example.spring_security.model.Role;
 import com.example.spring_security.model.User;
 import com.google.common.collect.Sets;
 import net.minidev.json.JSONObject;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.MethodOrderer;
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.TestMethodOrder;
+import org.junit.jupiter.api.*;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
@@ -54,6 +51,7 @@ class RoleControllerTest {
     }
 
     @Test
+    @Order(1)
     void addRole() throws Exception {
         JSONObject RoleJson = new JSONObject();
         RoleJson.put("name", "ROLE_TEST");
@@ -70,6 +68,19 @@ class RoleControllerTest {
     }
 
     @Test
-    void assignPermissionToRole() {
+    @Order(2)
+    void assignPermissionToRole() throws Exception {
+        JSONObject RoleJson = new JSONObject();
+        RoleJson.put("name", "ROLE_ADMIN");
+        RoleJson.put("permissions", Sets.newHashSet("role:write"));
+        RequestBuilder requestBuilder = MockMvcRequestBuilders
+                .post("/role/assignPermissionToRole")
+                .with(SecurityMockMvcRequestPostProcessors.user(admin))
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(RoleJson.toJSONString());
+        MvcResult result = mockMvc.perform(requestBuilder).andReturn();
+        MockHttpServletResponse response = result.getResponse();
+
+        assertEquals(HttpStatus.OK.value(), response.getStatus());
     }
 }
