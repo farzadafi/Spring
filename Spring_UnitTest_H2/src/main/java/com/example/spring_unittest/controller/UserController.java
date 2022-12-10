@@ -21,4 +21,10 @@ public class UserController {
         userService.register(user);
         return "OK";
     }
+
+    @GetMapping("/findUser")
+    public User findUser(@RequestParam Integer id) {
+        User user = userService.findById(id).get();
+        return user;
+    }
 }
