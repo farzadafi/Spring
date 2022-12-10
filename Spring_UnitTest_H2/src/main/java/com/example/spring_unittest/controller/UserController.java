@@ -1,6 +1,7 @@
 package com.example.spring_unittest.controller;
 
 import com.example.spring_unittest.dto.UserDto;
+import com.example.spring_unittest.exception.UserNotFoundException;
 import com.example.spring_unittest.mapper.UserMapper;
 import com.example.spring_unittest.model.User;
 import com.example.spring_unittest.service.user.UserServiceImpel;
@@ -24,8 +25,9 @@ public class UserController {
     }
 
     @GetMapping("/findUser")
-    public User findUser(@RequestParam Integer id) {
-        User user = userService.findById(id).get();
-        return user;
+    public UserDto findUser(@RequestParam Integer id) {
+        User user = userService.findById(id)
+                .orElseThrow( () -> new UserNotFoundException(id.toString() + " not found"));
+        return UserMapper.INSTANCE.modelToDto(user);
     }
 }
