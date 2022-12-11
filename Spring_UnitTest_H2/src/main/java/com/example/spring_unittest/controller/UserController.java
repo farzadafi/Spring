@@ -30,4 +30,11 @@ public class UserController {
                 .orElseThrow( () -> new UserNotFoundException(id.toString() + " not found"));
         return UserMapper.INSTANCE.modelToDto(user);
     }
+
+    @GetMapping("/findUserByUsername")
+    public UserDto findUserByUsername(@RequestParam String username) {
+        User user =  userService.findByUsername(username)
+                .orElseThrow( () -> new UserNotFoundException(String.format("%s not found", username)));
+        return UserMapper.INSTANCE.modelToDto(user);
+    }
 }
