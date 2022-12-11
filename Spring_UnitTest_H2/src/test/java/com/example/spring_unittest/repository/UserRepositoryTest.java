@@ -32,4 +32,17 @@ class UserRepositoryTest {
         //then
         assertThat(optionalUser.isPresent()).isTrue();
     }
+
+    @Test
+    @Order(2)
+    void findByUsername_userDoesNotExists_false() {
+        //given
+        String username = "naser";
+
+        //when
+        Optional<User> optionalUser = repository.findByUsername(username);
+
+        //then
+        assertThat(optionalUser.isPresent()).isFalse();
+    }
 }
