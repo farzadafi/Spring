@@ -26,4 +26,9 @@ public class UserServiceImpel implements UserService{
     public Optional<User> findById(Integer id) {
         return repository.findById(id);
     }
+
+    @Override
+    public Optional<User> findByUsername(String username) {
+        return repository.findByUsername(username);
+    }
 }
