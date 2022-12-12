@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class UserServiceImpel implements UserService{
+public class UserServiceImpel implements UserService {
 
     private final UserRepository repository;
 
@@ -19,8 +19,7 @@ public class UserServiceImpel implements UserService{
 
     @Override
     public void register(User user) {
-        if(repository.save(user).getId() == null)
-            throw new SaveFailException(String.format("fail to save %s", user.getUsername()));
+        repository.save(user);
     }
 
     @Override
