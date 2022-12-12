@@ -5,6 +5,7 @@ import com.example.spring_unittest.model.User;
 import com.example.spring_unittest.repository.UserRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -30,5 +31,10 @@ public class UserServiceImpel implements UserService{
     @Override
     public Optional<User> findByUsername(String username) {
         return repository.findByUsername(username);
+    }
+
+    @Override
+    public List<User> findAll() {
+        return repository.findAll();
     }
 }
