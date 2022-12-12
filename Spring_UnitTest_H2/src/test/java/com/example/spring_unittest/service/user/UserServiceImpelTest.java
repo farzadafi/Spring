@@ -1,5 +1,6 @@
 package com.example.spring_unittest.service.user;
 
+import com.example.spring_unittest.model.User;
 import com.example.spring_unittest.repository.UserRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Disabled;
@@ -36,12 +37,16 @@ class UserServiceImpelTest {
     }
 
     @Test
-    @Disabled
     void findById() {
+        userService.findById(1);
+
+        verify(userRepository).findById(1);
     }
 
     @Test
-    @Disabled
     void findByUsername() {
+        userService.findByUsername("farzad");
+
+        userRepository.findByUsername("farzad");
     }
 }
