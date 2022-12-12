@@ -1,6 +1,6 @@
 package com.example.spring_unittest.service.user;
 
-import com.example.spring_unittest.exception.SaveFailException;
+import com.example.spring_unittest.exception.UsernameDuplicateException;
 import com.example.spring_unittest.model.User;
 import com.example.spring_unittest.repository.UserRepository;
 import org.springframework.stereotype.Service;
@@ -19,6 +19,8 @@ public class UserServiceImpel implements UserService {
 
     @Override
     public void register(User user) {
+        if(repository.findByUsername(user.getUsername()).isPresent())
+            throw new UsernameDuplicateException(String.format("%s username is exist", user.getUsername() ));
         repository.save(user);
     }
 
