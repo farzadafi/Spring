@@ -1,11 +1,11 @@
-server:
-  port: 8080
-
-spring:
-  cloud:
-    gateway:
-      routes:
-        - id: testModule
-          uri: http://localhost:8085/
-          predicates:
-            - Path=/test/**
+#server:
+#  port: 8080
+#
+#spring:
+#  cloud:
+#    gateway:
+#      routes:
+#        - id: testModule
+#          uri: http://localhost:8085/
+#          predicates:
+#            - Path=/test/**
