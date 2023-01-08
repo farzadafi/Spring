@@ -3,9 +3,11 @@ package com.example.authentication_server.service.user;
 import com.example.authentication_server.exception.UserNameDuplicateException;
 import com.example.authentication_server.model.User;
 import com.example.authentication_server.repository.UserRepository;
+import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 
+@Service
 public class UserServiceImpel implements UserService{
 
     private final UserRepository repository;
