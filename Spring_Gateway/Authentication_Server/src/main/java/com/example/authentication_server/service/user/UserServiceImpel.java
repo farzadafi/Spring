@@ -1,6 +1,7 @@
 package com.example.authentication_server.service.user;
 
 import com.example.authentication_server.exception.UserNameDuplicateException;
+import com.example.authentication_server.exception.UserNotFoundException;
 import com.example.authentication_server.model.User;
 import com.example.authentication_server.repository.UserRepository;
 import org.springframework.stereotype.Service;
@@ -8,7 +9,7 @@ import org.springframework.stereotype.Service;
 import java.util.Optional;
 
 @Service
-public class UserServiceImpel implements UserService{
+public class UserServiceImpel implements UserService {
 
     private final UserRepository repository;
 
@@ -19,8 +20,14 @@ public class UserServiceImpel implements UserService{
     @Override
     public void registerUser(User user) {
         Optional<User> findUser = repository.findByUsername(user.getUsername());
-        if(findUser.isPresent())
+        if (findUser.isPresent())
             throw new UserNameDuplicateException(String.format("%s already defined", user.getUsername()));
         repository.save(user);
+    }
+
+    @Override
+    public User findByUsername(String username) {
+        return repository.findByUsername(username)
+                .orElseThrow(() -> new UserNotFoundException(String.format("%s not found!", username)));
     }
 }

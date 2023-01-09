@@ -5,4 +5,6 @@ import com.example.authentication_server.model.User;
 public interface UserService {
 
     void registerUser(User user);
+
+    User findByUsername(String username);
 }
