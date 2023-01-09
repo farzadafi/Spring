@@ -30,4 +30,10 @@ public class UserServiceImpel implements UserService {
         return repository.findByUsername(username)
                 .orElseThrow(() -> new UserNotFoundException(String.format("%s not found!", username)));
     }
+
+    @Override
+    public boolean isLogin(String username, String password) {
+        User user = findByUsername(username);
+        return user.getPassword().equals(password);
+    }
 }
