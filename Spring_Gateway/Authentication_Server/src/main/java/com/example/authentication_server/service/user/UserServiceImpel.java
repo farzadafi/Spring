@@ -1,5 +1,6 @@
 package com.example.authentication_server.service.user;
 
+import com.example.authentication_server.exception.PasswordIncorrectException;
 import com.example.authentication_server.exception.UserNameDuplicateException;
 import com.example.authentication_server.exception.UserNotFoundException;
 import com.example.authentication_server.model.User;
@@ -34,6 +35,9 @@ public class UserServiceImpel implements UserService {
     @Override
     public boolean isLogin(String username, String password) {
         User user = findByUsername(username);
-        return user.getPassword().equals(password);
+        if(user.getPassword().equals(password))
+            return true;
+        else
+            throw new PasswordIncorrectException("your password is Incorrect");
     }
 }
