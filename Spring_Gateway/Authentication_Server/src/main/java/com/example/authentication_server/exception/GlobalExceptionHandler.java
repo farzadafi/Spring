@@ -21,4 +21,11 @@ public class GlobalExceptionHandler {
         CustomException exception = new CustomException(HttpStatus.BAD_REQUEST, e.getLocalizedMessage());
         return new ResponseEntity<>(exception, exception.httpStatus());
     }
+
+    @ExceptionHandler(PasswordIncorrectException.class)
+    public ResponseEntity<?> passwordIncorrectHandler(PasswordIncorrectException e) {
+
+        CustomException exception = new CustomException(HttpStatus.FORBIDDEN, e.getLocalizedMessage());
+        return new ResponseEntity<>(exception, exception.httpStatus());
+    }
 }
