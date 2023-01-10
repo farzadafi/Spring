@@ -15,7 +15,7 @@ public class GlobalExceptionHandler {
         return new ResponseEntity<>(exception, exception.httpStatus());
     }
 
-    @ExceptionHandler(UserNotFoundException.class)
+    @ExceptionHandler(UserNameDuplicateException.class)
     public ResponseEntity<?> usernameDuplicateHandler(UserNameDuplicateException e) {
 
         CustomException exception = new CustomException(HttpStatus.BAD_REQUEST, e.getLocalizedMessage());
