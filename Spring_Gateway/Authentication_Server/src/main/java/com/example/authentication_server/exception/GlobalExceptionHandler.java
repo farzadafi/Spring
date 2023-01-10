@@ -14,4 +14,11 @@ public class GlobalExceptionHandler {
         CustomException exception = new CustomException(HttpStatus.NOT_FOUND, e.getLocalizedMessage());
         return new ResponseEntity<>(exception, exception.httpStatus());
     }
+
+    @ExceptionHandler(UserNotFoundException.class)
+    public ResponseEntity<?> usernameDuplicateHandler(UserNameDuplicateException e) {
+
+        CustomException exception = new CustomException(HttpStatus.BAD_REQUEST, e.getLocalizedMessage());
+        return new ResponseEntity<>(exception, exception.httpStatus());
+    }
 }
