@@ -8,5 +8,10 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 @ControllerAdvice
 public class GlobalExceptionHandler {
 
+    @ExceptionHandler(UserNotFoundException.class)
+    public ResponseEntity<?> userNotFoundHandler(UserNotFoundException e) {
 
+        CustomException exception = new CustomException(HttpStatus.NOT_FOUND, e.getLocalizedMessage());
+        return new ResponseEntity<>(exception, exception.httpStatus());
+    }
 }
