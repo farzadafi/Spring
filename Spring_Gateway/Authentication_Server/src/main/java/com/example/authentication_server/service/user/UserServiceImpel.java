@@ -39,7 +39,8 @@ public class UserServiceImpel implements UserService {
     @Override
     public boolean isLogin(String username, String password) {
         User user = findByUsername(username);
-        if(user.getPassword().equals(password))
+        boolean isLikePassword = passwordEncoder.matches(password, user.getPassword());
+        if(isLikePassword)
             return true;
         else
             throw new PasswordIncorrectException("your password is Incorrect");
