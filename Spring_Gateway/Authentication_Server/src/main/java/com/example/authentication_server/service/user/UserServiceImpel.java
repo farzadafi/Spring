@@ -5,6 +5,7 @@ import com.example.authentication_server.exception.UserNameDuplicateException;
 import com.example.authentication_server.exception.UserNotFoundException;
 import com.example.authentication_server.model.User;
 import com.example.authentication_server.repository.UserRepository;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
@@ -13,9 +14,11 @@ import java.util.Optional;
 public class UserServiceImpel implements UserService {
 
     private final UserRepository repository;
+    private final BCryptPasswordEncoder passwordEncoder;
 
-    public UserServiceImpel(UserRepository repository) {
+    public UserServiceImpel(UserRepository repository, BCryptPasswordEncoder passwordEncoder) {
         this.repository = repository;
+        this.passwordEncoder = passwordEncoder;
     }
 
     @Override
@@ -23,6 +26,7 @@ public class UserServiceImpel implements UserService {
         Optional<User> findUser = repository.findByUsername(user.getUsername());
         if (findUser.isPresent())
             throw new UserNameDuplicateException(String.format("%s already defined", user.getUsername()));
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
         repository.save(user);
     }
 
