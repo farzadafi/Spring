@@ -1,5 +1,6 @@
 package com.example.spring_gateway.jwt;
 
+import com.example.spring_gateway.exception.InvalidHeaderException;
 import com.example.spring_gateway.exception.InvalidTokenException;
 import com.google.common.base.Strings;
 import io.jsonwebtoken.Claims;
@@ -24,7 +25,9 @@ public class JwtTokenVerifier {
     }
 
     public void tokenVerifier(ServerHttpRequest request) {
-        String authorizationHeader = Objects.requireNonNull(request.getHeaders().get("Authorization")).get(0);
+        if(request.getHeaders().get("Authorization") == null)
+            throw new InvalidHeaderException("Please send a token");
+        String authorizationHeader = (Objects.requireNonNull(request.getHeaders().get("Authorization"))).get(0);
 
         if(Strings.isNullOrEmpty(authorizationHeader) || !authorizationHeader.startsWith(jwtConfig.getTokenPrefix())) {
             throw new InvalidTokenException("token is not correct format");
