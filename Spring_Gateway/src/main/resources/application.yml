@@ -1,3 +1,6 @@
+server:
+  error:
+    include-message: always
 #server:
 #  port: 8080
 #
