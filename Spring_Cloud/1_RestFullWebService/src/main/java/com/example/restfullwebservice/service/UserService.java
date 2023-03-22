@@ -13,11 +13,12 @@ import java.util.function.Predicate;
 public class UserService {
 
     private static final List<User> users = new ArrayList<>();
+    private static int userCount = 0;
 
     static {
-        users.add(new User(1, "farzad", LocalDateTime.now().minusYears(26)));
-        users.add(new User(2, "farhad", LocalDateTime.now().minusYears(25)));
-        users.add(new User(3, "fardad", LocalDateTime.now().minusYears(24)));
+        users.add(new User(++userCount, "farzad", LocalDateTime.now().minusYears(26)));
+        users.add(new User(++userCount, "farhad", LocalDateTime.now().minusYears(25)));
+        users.add(new User(++userCount, "fardad", LocalDateTime.now().minusYears(24)));
     }
 
     public List<User> findAll() {
@@ -30,5 +31,10 @@ public class UserService {
                 filter(predicate)
                 .findFirst()
                 .orElseThrow(() -> new UserNotFoundException("this user not found"));
+    }
+
+    public void addUser(User user) {
+        user.setId(++userCount);
+        users.add(user);
     }
 }
