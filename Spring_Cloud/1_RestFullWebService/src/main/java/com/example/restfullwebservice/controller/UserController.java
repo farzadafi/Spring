@@ -2,8 +2,11 @@ package com.example.restfullwebservice.controller;
 
 import com.example.restfullwebservice.model.User;
 import com.example.restfullwebservice.service.UserService;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import java.net.URI;
 import java.util.List;
 
 @RestController
@@ -27,7 +30,12 @@ public class UserController {
     }
 
     @PostMapping("/users")
-    public void addUser(@RequestBody User user) {
-        userService.addUser(user);
+    public ResponseEntity<User> addUser(@RequestBody User user) {
+        User savedUser = userService.addUser(user);
+        URI location = ServletUriComponentsBuilder.fromCurrentRequest()
+                .path("/{id}")
+                .buildAndExpand(savedUser.getId())
+                .toUri();
+        return ResponseEntity.created(location).build();
     }
 }
