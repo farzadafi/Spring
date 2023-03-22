@@ -7,6 +7,7 @@ import org.springframework.stereotype.Component;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Predicate;
 
 @Component
 public class UserService {
@@ -24,10 +25,9 @@ public class UserService {
     }
 
     public User findById(Integer id) {
+        Predicate<? super User> predicate = user -> user.getId().equals(id);
         return users.stream().
-                filter(user -> user
-                        .getId()
-                        .equals(id))
+                filter(predicate)
                 .findFirst()
                 .orElseThrow(() -> new UserNotFoundException("this user not found"));
     }
