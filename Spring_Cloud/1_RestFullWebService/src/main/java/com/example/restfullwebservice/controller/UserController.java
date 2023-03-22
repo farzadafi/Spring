@@ -1,7 +1,9 @@
 package com.example.restfullwebservice.controller;
 
+import com.example.restfullwebservice.dto.UserDto;
 import com.example.restfullwebservice.model.User;
 import com.example.restfullwebservice.service.UserService;
+import org.modelmapper.ModelMapper;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
@@ -14,9 +16,11 @@ import java.util.List;
 public class UserController {
 
     public final UserService userService;
+    public final ModelMapper mapper;
 
-    public UserController(UserService userService) {
+    public UserController(UserService userService, ModelMapper mapper) {
         this.userService = userService;
+        this.mapper = mapper;
     }
 
     @GetMapping("/users")
@@ -30,7 +34,8 @@ public class UserController {
     }
 
     @PostMapping("/users")
-    public ResponseEntity<User> addUser(@RequestBody User user) {
+    public ResponseEntity<User> addUser(@RequestBody UserDto userDto) {
+        User user = mapper.map(userDto, User.class);
         User savedUser = userService.addUser(user);
         URI location = ServletUriComponentsBuilder.fromCurrentRequest()
                 .path("/{id}")
