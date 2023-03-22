@@ -3,6 +3,7 @@ package com.example.restfullwebservice.controller;
 import com.example.restfullwebservice.dto.UserDto;
 import com.example.restfullwebservice.model.User;
 import com.example.restfullwebservice.service.UserService;
+import jakarta.validation.Valid;
 import org.modelmapper.ModelMapper;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -34,7 +35,7 @@ public class UserController {
     }
 
     @PostMapping("/users")
-    public ResponseEntity<User> addUser(@RequestBody UserDto userDto) {
+    public ResponseEntity<User> addUser(@RequestBody @Valid UserDto userDto) {
         User user = mapper.map(userDto, User.class);
         User savedUser = userService.addUser(user);
         URI location = ServletUriComponentsBuilder.fromCurrentRequest()
