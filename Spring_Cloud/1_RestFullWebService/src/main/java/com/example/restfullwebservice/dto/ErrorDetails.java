@@ -15,5 +15,5 @@ public class ErrorDetails {
 
     private LocalDateTime localDateTime;
     private String message;
-    private String details;
+    private int statusCode;
 }
