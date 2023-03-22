@@ -3,6 +3,7 @@ package com.example.restfullwebservice.controller;
 import com.example.restfullwebservice.model.User;
 import com.example.restfullwebservice.service.UserService;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -21,5 +22,10 @@ public class UserController {
     @GetMapping("/users")
     public List<User> retrieveAllUser() {
         return userService.findAll();
+    }
+
+    @GetMapping("/users/{id}")
+    public User retrieveUser(@PathVariable int id) {
+        return userService.findById(id);
     }
 }
