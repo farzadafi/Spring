@@ -24,7 +24,7 @@ public class HelloWorldController {
         return new HelloWorldBean("hello world");
     }
 
-    @GetMapping("hello")
+    @GetMapping("good-morning")
     public HelloWorldBean goodMorning() {
         Locale locale = LocaleContextHolder.getLocale();
         String message = messageSource.getMessage("good.morning.message", null, "Default Message", locale);
