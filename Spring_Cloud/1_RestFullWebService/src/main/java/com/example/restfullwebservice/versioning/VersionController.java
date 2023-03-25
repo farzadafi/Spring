@@ -30,7 +30,7 @@ public class VersionController {
     }
 
     //****
-    //based on Request Header
+    //based on Request Header -> add this key and value to header
     @GetMapping(path = "/person/header", headers = "X-API-VERSION=1")
     public PersonV1 getPersonV1BasedOnRequestHeader() {
         return new PersonV1("Farzad Afshar");
@@ -38,6 +38,18 @@ public class VersionController {
 
     @GetMapping(path = "/person/header", headers = "X-API-VERSION=2")
     public PersonV1 getPersonV2BasedOnRequestHeader() {
+        return new PersonV1("Farzad Afshar");
+    }
+
+    //****
+    //based on Request Accept Header -> add this key to Accept header : Accept=value
+    @GetMapping(path = "/person/accept", headers = "application/vnd.company.app-v1+json")
+    public PersonV1 getPersonV1BasedOnAcceptHeader() {
+        return new PersonV1("Farzad Afshar");
+    }
+
+    @GetMapping(path = "/person/accept", headers = "application/vnd.company.app-v2+json")
+    public PersonV1 getPersonV2BasedOnAcceptHeader() {
         return new PersonV1("Farzad Afshar");
     }
 }
