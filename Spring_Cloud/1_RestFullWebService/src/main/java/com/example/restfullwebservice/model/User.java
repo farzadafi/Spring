@@ -11,10 +11,12 @@ import java.time.LocalDateTime;
 @Setter
 @Builder
 @ToString
+//@JsonIgnoreProperties("user_name")
 public class User {
     private Integer id;
 
     @JsonProperty("user_name")
+    //@JsonIgnore
     private String name;
     private LocalDateTime birthdate;
 }
