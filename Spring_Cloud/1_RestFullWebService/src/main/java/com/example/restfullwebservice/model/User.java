@@ -1,5 +1,6 @@
 package com.example.restfullwebservice.model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;
 
 import java.time.LocalDateTime;
@@ -12,6 +13,8 @@ import java.time.LocalDateTime;
 @ToString
 public class User {
     private Integer id;
+
+    @JsonProperty("user_name")
     private String name;
     private LocalDateTime birthdate;
 }
