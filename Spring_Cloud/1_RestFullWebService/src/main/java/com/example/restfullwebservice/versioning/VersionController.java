@@ -12,7 +12,7 @@ public class VersionController {
         return new PersonV1("Farzad Afshar");
     }
 
-    @GetMapping("/v1/person")
+    @GetMapping("/v2/person")
     public PersonV2 getPersonV2BasedOnUrl() {
         return new PersonV2("Farzad", "Afshar");
     }

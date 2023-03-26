@@ -1,10 +1,13 @@
 package com.example.restfullwebservice.controller;
 
 import com.example.restfullwebservice.dto.UserDto;
+import com.example.restfullwebservice.exception.UserNotFoundException;
 import com.example.restfullwebservice.model.User;
 import com.example.restfullwebservice.service.UserService;
 import jakarta.validation.Valid;
 import org.modelmapper.ModelMapper;
+import org.springframework.hateoas.EntityModel;
+import org.springframework.hateoas.server.mvc.WebMvcLinkBuilder;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
@@ -48,5 +51,17 @@ public class UserController {
     @DeleteMapping("/users/{id}")
     public void deleteUser(@PathVariable int id) {
         userService.deleteById(id);
+    }
+
+    @GetMapping("/users/hateoas/{id}")
+    public EntityModel<User> retrieveUserWithHateoas(@PathVariable int id) {
+        User user = userService.findById(id);
+        if(user == null)
+            throw new UserNotFoundException("This user not found!");
+        EntityModel<User> entityModel = EntityModel.of(user);
+        WebMvcLinkBuilder link = WebMvcLinkBuilder.linkTo(WebMvcLinkBuilder.methodOn(this.getClass()).retrieveAllUser());
+        entityModel.add(link.withRel("all-user"));
+
+        return entityModel;
     }
 }
