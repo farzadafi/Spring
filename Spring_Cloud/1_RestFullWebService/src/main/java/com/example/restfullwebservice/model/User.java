@@ -1,5 +1,6 @@
 package com.example.restfullwebservice.model;
 
+import com.fasterxml.jackson.annotation.JsonFilter;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;
 
@@ -12,6 +13,7 @@ import java.time.LocalDateTime;
 @Builder
 @ToString
 //@JsonIgnoreProperties("user_name")
+@JsonFilter("userFilter")
 public class User {
     private Integer id;
 
