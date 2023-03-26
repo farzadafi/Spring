@@ -4,15 +4,20 @@ import com.example.restfullwebservice.dto.UserDto;
 import com.example.restfullwebservice.exception.UserNotFoundException;
 import com.example.restfullwebservice.model.User;
 import com.example.restfullwebservice.service.UserService;
+import com.fasterxml.jackson.databind.ser.FilterProvider;
+import com.fasterxml.jackson.databind.ser.impl.SimpleBeanPropertyFilter;
+import com.fasterxml.jackson.databind.ser.impl.SimpleFilterProvider;
 import jakarta.validation.Valid;
 import org.modelmapper.ModelMapper;
 import org.springframework.hateoas.EntityModel;
 import org.springframework.hateoas.server.mvc.WebMvcLinkBuilder;
 import org.springframework.http.ResponseEntity;
+import org.springframework.http.converter.json.MappingJacksonValue;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.net.URI;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @RestController
@@ -63,5 +68,15 @@ public class UserController {
         entityModel.add(link.withRel("all-user"));
 
         return entityModel;
+    }
+
+    @GetMapping("/users/filter")
+    public MappingJacksonValue retrieveUserWithFilter() {
+        User user = new User(1, "afshar", LocalDateTime.now().minusYears(26));
+        MappingJacksonValue mappingJacksonValue = new MappingJacksonValue(user);
+        SimpleBeanPropertyFilter filter = SimpleBeanPropertyFilter.filterOutAllExcept("id", "user_name");
+        FilterProvider filterProvider = new SimpleFilterProvider().addFilter("userFilter", filter);
+        mappingJacksonValue.setFilters(filterProvider);
+        return mappingJacksonValue;
     }
 }
