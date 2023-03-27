@@ -10,6 +10,12 @@ import java.util.HashMap;
 @RestController
 public class ConversionController {
 
+    private final CurrencyExchangeProxy exchangeProxy;
+
+    public ConversionController(CurrencyExchangeProxy exchangeProxy) {
+        this.exchangeProxy = exchangeProxy;
+    }
+
     @GetMapping("/conversion")
     public CurrencyExchange getExchange() {
         HashMap<String, String> uriVariable = new HashMap<>();
@@ -20,5 +26,10 @@ public class ConversionController {
                 getForEntity("http://localhost:8000/currency-exchange/from/{from}/to/{to}",
                         CurrencyExchange.class, uriVariable);
         return responseEntity.getBody();
+    }
+
+    @GetMapping("/conversion-feign")
+    public CurrencyExchange getExchangeFeign() {
+        return exchangeProxy.getExchange("Rial", "Dolor");
     }
 }

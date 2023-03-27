@@ -8,10 +8,13 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="LimitMicroService" />
+        <module name="currency-conversion-service" />
         <module name="server_test" />
+        <module name="spring-cloud-config-server" />
         <module name="Spring_UnitTest_H2" />
         <module name="Spring_Retry" />
         <module name="2_MicroService_SpringCloud" />
+        <module name="currency-exchange-service" />
         <module name="1_RestFullWebService" />
         <module name="Spring_Gateway" />
       </profile>
@@ -57,7 +60,10 @@
       <module name="Spring_Security" options="-parameters" />
       <module name="Spring_UnitTest" options="-parameters" />
       <module name="Spring_UnitTest_H2" options="-parameters" />
+      <module name="currency-conversion-service" options="-parameters" />
+      <module name="currency-exchange-service" options="-parameters" />
       <module name="server_test" options="-parameters" />
+      <module name="spring-cloud-config-server" options="-parameters" />
     </option>
   </component>
 </project>

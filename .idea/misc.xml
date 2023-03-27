@@ -18,6 +18,9 @@
         <option value="$PROJECT_DIR$/Spring_Cloud/1_RestFullWebService/pom.xml" />
         <option value="$PROJECT_DIR$/2_MicroService_SpringCloud/pom.xml" />
         <option value="$PROJECT_DIR$/Spring_Cloud/2_MicroService_SpringCloud/LimitMicroService/pom.xml" />
+        <option value="$PROJECT_DIR$/Spring_Cloud/2_MicroService_SpringCloud/spring-cloud-config-server/pom.xml" />
+        <option value="$PROJECT_DIR$/Spring_Cloud/2_MicroService_SpringCloud/currency-conversion-service/pom.xml" />
+        <option value="$PROJECT_DIR$/Spring_Cloud/2_MicroService_SpringCloud/currency-exchange-service/pom.xml" />
       </list>
     </option>
   </component>
