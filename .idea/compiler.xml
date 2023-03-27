@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile default="true" name="Default" enabled="true" />
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="LimitMicroService" />
+        <module name="server_test" />
+        <module name="Spring_UnitTest_H2" />
+        <module name="Spring_Retry" />
+        <module name="2_MicroService_SpringCloud" />
+        <module name="1_RestFullWebService" />
+        <module name="Spring_Gateway" />
+      </profile>
+      <profile name="Annotation profile for Spring_UnitTest" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <processorPath useClasspath="false">
+          <entry name="$MAVEN_REPOSITORY$/org/mapstruct/mapstruct-processor/1.5.3.Final/mapstruct-processor-1.5.3.Final.jar" />
+          <entry name="$MAVEN_REPOSITORY$/org/mapstruct/mapstruct/1.5.3.Final/mapstruct-1.5.3.Final.jar" />
+          <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/1.18.24/lombok-1.18.24.jar" />
+          <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok-mapstruct-binding/0.2.0/lombok-mapstruct-binding-0.2.0.jar" />
+        </processorPath>
+        <module name="Spring_UnitTest" />
+      </profile>
+      <profile name="Annotation profile for Authentication_Server" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <processorPath useClasspath="false">
+          <entry name="$MAVEN_REPOSITORY$/org/mapstruct/mapstruct-processor/1.5.2.Final/mapstruct-processor-1.5.2.Final.jar" />
+          <entry name="$MAVEN_REPOSITORY$/org/mapstruct/mapstruct/1.5.2.Final/mapstruct-1.5.2.Final.jar" />
+          <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/1.18.20/lombok-1.18.20.jar" />
+          <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok-mapstruct-binding/0.2.0/lombok-mapstruct-binding-0.2.0.jar" />
+        </processorPath>
+        <module name="Authentication_Server" />
+        <module name="Spring_Security" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="2_MicroService_SpringCloud" target="17" />
+      <module name="Spring_UnitTest_H2" target="17" />
+    </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="1_RestFullWebService" options="-parameters" />
+      <module name="2_MicroService_SpringCloud" options="-parameters" />
+      <module name="Authentication_Server" options="-parameters" />
+      <module name="LimitMicroService" options="-parameters" />
+      <module name="Spring_Gateway" options="-parameters" />
+      <module name="Spring_Retry" options="-parameters" />
+      <module name="Spring_Security" options="-parameters" />
+      <module name="Spring_UnitTest" options="-parameters" />
+      <module name="Spring_UnitTest_H2" options="-parameters" />
+      <module name="server_test" options="-parameters" />
+    </option>
+  </component>
+</project>
