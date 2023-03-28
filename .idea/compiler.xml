@@ -13,10 +13,10 @@
         <module name="spring-cloud-config-server" />
         <module name="Spring_UnitTest_H2" />
         <module name="Spring_Retry" />
-        <module name="2_MicroService_SpringCloud" />
         <module name="currency-exchange-service" />
         <module name="1_RestFullWebService" />
         <module name="Spring_Gateway" />
+        <module name="naming-server" />
       </profile>
       <profile name="Annotation profile for Spring_UnitTest" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
@@ -45,6 +45,7 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="2_MicroService_SpringCloud" target="17" />
       <module name="Spring_UnitTest_H2" target="17" />
     </bytecodeTargetLevel>
   </component>
@@ -61,6 +62,7 @@
       <module name="Spring_UnitTest_H2" options="-parameters" />
       <module name="currency-conversion-service" options="-parameters" />
       <module name="currency-exchange-service" options="-parameters" />
+      <module name="naming-server" options="-parameters" />
       <module name="server_test" options="-parameters" />
       <module name="spring-cloud-config-server" options="-parameters" />
     </option>
