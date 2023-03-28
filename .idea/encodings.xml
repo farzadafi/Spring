@@ -4,11 +4,14 @@
     <file url="file://$PROJECT_DIR$/Spring_Cloud/1_RestFullWebService/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/Spring_Cloud/1_RestFullWebService/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/Spring_Cloud/2_MicroService_SpringCloud/LimitMicroService/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/Spring_Cloud/2_MicroService_SpringCloud/api-gateway/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/Spring_Cloud/2_MicroService_SpringCloud/api-gateway/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/Spring_Cloud/2_MicroService_SpringCloud/currency-conversion-service/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/Spring_Cloud/2_MicroService_SpringCloud/currency-conversion-service/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/Spring_Cloud/2_MicroService_SpringCloud/currency-exchange-service/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/Spring_Cloud/2_MicroService_SpringCloud/currency-exchange-service/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/Spring_Cloud/2_MicroService_SpringCloud/naming-server/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/Spring_Cloud/2_MicroService_SpringCloud/naming-server/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/Spring_Cloud/2_MicroService_SpringCloud/spring-cloud-config-server/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/Spring_Cloud/2_MicroService_SpringCloud/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/Spring_Gateway/Authentication_Server/src/main/java" charset="UTF-8" />
