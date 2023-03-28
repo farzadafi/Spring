@@ -18,7 +18,10 @@ public class ApiGatewayConfiguration {
                         .path("/currency-exchange/**")
                         .uri("lb://currency-exchange-service"))
                 .route(p -> p
-                        .path("/currency-conversion/**")
+                        .path("/conversion/**")
+                        .uri("lb://currency-conversion-service"))
+                .route(p -> p
+                        .path("/conversion-feign/**")
                         .uri("lb://currency-conversion-service"))
                 .build();
     }
