@@ -1,5 +1,6 @@
 package com.example.currencyexchangeservice;
 
+import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
 import io.github.resilience4j.retry.annotation.Retry;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -11,6 +12,7 @@ public class RetryController {
 
     @GetMapping("/retry")
     @Retry(name = "retry", fallbackMethod = "fallback")
+    @CircuitBreaker(name = "default", fallbackMethod = "fallback")
     public String retry() {
         ResponseEntity<String> forEntity = new RestTemplate()
                 .getForEntity("http://localhost:1111/naser", String.class);
