@@ -8,10 +8,10 @@ services:
     networks:
       - currency-network
     depends_on:
-      - naming-server
-    environment:
-      EUREKA.CLIENT.SERVICEURL.DEFAULTZONE: http://naming-server:8761/eureka
-      SPRING.ZIPKIN.BASEURL: http://zipkin-server:9411/
+      - eureka-server
+#    environment:
+#      EUREKA.CLIENT.SERVICEURL.DEFAULTZONE: http://eureka-server:8761/eureka #write in applicaion.propertis
+#      SPRING.ZIPKIN.BASEURL: http://zipkin-server:9411/ # write in Dockerfile
 
   currency-exchange:
     image: currency-exchange-service
@@ -20,10 +20,10 @@ services:
     networks:
       - currency-network
     depends_on:
-      - naming-server
-    environment:
-      EUREKA.CLIENT.SERVICEURL.DEFAULTZONE: http://naming-server:8761/eureka
-      SPRING.ZIPKIN.BASEURL: http://zipkin-server:9411/
+      - eureka-server
+#    environment:
+#      EUREKA.CLIENT.SERVICEURL.DEFAULTZONE: http://eureka-server:8761/eureka #write in applicaion.propertis
+#      SPRING.ZIPKIN.BASEURL: http://zipkin-server:9411/ # write in Dockerfile
 
   api-gateway:
     image: api-gateway
@@ -32,12 +32,12 @@ services:
     networks:
       - currency-network
     depends_on:
-      - naming-server
-    environment:
-      EUREKA.CLIENT.SERVICEURL.DEFAULTZONE: http://naming-server:8761/eureka
-      SPRING.ZIPKIN.BASEURL: http://zipkin-server:9411/
+      - eureka-server
+#    environment:
+#      EUREKA.CLIENT.SERVICEURL.DEFAULTZONE: http://naming-server:8761/eureka #write in applicaion.propertis
+#      SPRING.ZIPKIN.BASEURL: http://zipkin-server:9411/ # write in Dockerfile
 
-  naming-server:
+  eureka-server:
     image: naming-server
     ports:
       - "8761:8761"
