@@ -25,8 +25,13 @@
         <option value="$PROJECT_DIR$/api-gateway/pom.xml" />
         <option value="$PROJECT_DIR$/Spring_Cloud/2_MicroService_SpringCloud/naming-server/pom.xml" />
         <option value="$PROJECT_DIR$/Spring_Cloud/2_MicroService_SpringCloud/api-gateway/pom.xml" />
+        <option value="$PROJECT_DIR$/naser/pom.xml" />
       </list>
     </option>
+  </component>
+  <component name="PWA">
+    <option name="enabled" value="true" />
+    <option name="wasEnabledAtLeastOnce" value="true" />
   </component>
   <component name="ProjectRootManager" version="2" languageLevel="JDK_17" default="true" project-jdk-name="17" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/out" />
