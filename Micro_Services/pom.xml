@@ -13,8 +13,13 @@
     <groupId>com.example</groupId>
     <artifactId>Micro_Services</artifactId>
     <version>0.0.1-SNAPSHOT</version>
+    <packaging>pom</packaging>
     <name>Micro_Services</name>
     <description>Micro_Services</description>
+
+    <modules>
+        <module>Customer</module>
+    </modules>
 
     <properties>
         <java.version>17</java.version>
