@@ -5,14 +5,14 @@ spring:
   application:
     name: customer
   datasource:
-    username: 'postgres'
-    url: jdbc:postgresql://localhost:5432/customer
-    password: 'afshar'
-    jpa:
-      properties:
-        hibernate:
-          dialect: org.hibernate.dialect.PostgreSQLDialect
-          format_sql: 'true'
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5433/customer
+    username: postgres
+    password: afshar
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
       hibernate:
-        ddl-auto: update
-      show-sql: 'true'
+        enable_lazy_load_no_trans: true
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
