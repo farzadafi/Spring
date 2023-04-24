@@ -26,16 +26,24 @@
         <java.version>17</java.version>
         <spring.boot.maven.plugin.version>3.0.5</spring.boot.maven.plugin.version>
         <spring.boot.dependecies.version>3.0.5</spring.boot.dependecies.version>
+        <spring.cloud.version>2022.0.1</spring.cloud.version>
     </properties>
 
     <dependencyManagement>
         <dependencies>
+
             <dependency>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-dependencies</artifactId>
                 <version>${spring.boot.dependecies.version}</version>
                 <scope>import</scope>
                 <type>pom</type>
+            </dependency>
+
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>${spring.cloud.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
