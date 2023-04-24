@@ -20,6 +20,7 @@
     <modules>
         <module>Customer</module>
         <module>Fraud</module>
+        <module>eureka-server</module>
     </modules>
 
     <properties>
