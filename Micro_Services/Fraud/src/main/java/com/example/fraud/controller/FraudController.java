@@ -1,7 +1,7 @@
 package com.example.fraud.controller;
 
-import com.example.fraud.dto.fraudCheckResponse;
 import com.example.fraud.service.FraudCheckHistoryService;
+import com.farzadafi.clients.fraud.FraudCheckResponse;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -9,8 +9,8 @@ import org.springframework.web.bind.annotation.*;
 public record FraudController(FraudCheckHistoryService fraudCheckHistoryService) {
 
     @GetMapping(path = "{customerId}")
-    public fraudCheckResponse isFraudster(@PathVariable Integer customerId) {
+    public FraudCheckResponse isFraudster(@PathVariable Integer customerId) {
         boolean fraudulentCustomer = fraudCheckHistoryService.isFraudulentCustomer(customerId);
-        return new fraudCheckResponse(fraudulentCustomer);
+        return new FraudCheckResponse(fraudulentCustomer);
     }
 }
