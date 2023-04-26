@@ -22,6 +22,7 @@
         <module>Fraud</module>
         <module>eureka-server</module>
         <module>clients</module>
+        <module>Notification</module>
     </modules>
 
     <properties>
