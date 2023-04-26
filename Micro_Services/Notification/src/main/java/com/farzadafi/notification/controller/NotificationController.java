@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 @Slf4j
 public record NotificationController(NotificationService notificationService) {
 
-    @PostMapping
+    @PostMapping("api/v1/notification")
     public void sendNotification(@RequestBody NotificationRequest notificationRequest) {
         log.info("New notification {}", notificationRequest);
         notificationService.send(notificationRequest);
