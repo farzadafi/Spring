@@ -23,6 +23,7 @@
         <module>eureka-server</module>
         <module>clients</module>
         <module>Notification</module>
+        <module>ApiGateway</module>
     </modules>
 
     <properties>
