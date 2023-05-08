@@ -24,6 +24,7 @@
         <module>clients</module>
         <module>Notification</module>
         <module>ApiGateway</module>
+        <module>Advance_Message_q</module>
     </modules>
 
     <properties>
