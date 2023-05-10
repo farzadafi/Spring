@@ -17,6 +17,8 @@ spring:
         enable_lazy_load_no_trans: true
     database-platform: org.hibernate.dialect.PostgreSQLDialect
     show-sql: true
+  rabbitmq:
+    addresses: localhost:5672
 
 eureka:
   client:
