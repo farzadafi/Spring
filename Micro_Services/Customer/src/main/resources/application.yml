@@ -9,6 +9,8 @@ spring:
     url: jdbc:postgresql://localhost:5433/customer
     username: postgres
     password: afshar
+  rabbitmq:
+    addresses: localhost:5672
   jpa:
     hibernate:
       ddl-auto: create-drop
