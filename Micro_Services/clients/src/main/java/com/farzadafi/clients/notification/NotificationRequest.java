@@ -1,11 +1,11 @@
 package com.farzadafi.clients.notification;
 
-import java.time.LocalDateTime;
+import java.util.Date;
 
 public record NotificationRequest(Integer notificationId,
                                   Integer toCustomerId,
                                   String toCustomerEmail,
                                   String sender,
                                   String message,
-                                  LocalDateTime sendAt) {
+                                  Date sendAt) {
 }
