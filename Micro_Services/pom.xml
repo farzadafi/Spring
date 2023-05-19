@@ -32,6 +32,7 @@
         <spring.boot.maven.plugin.version>3.0.5</spring.boot.maven.plugin.version>
         <spring.boot.dependecies.version>3.0.5</spring.boot.dependecies.version>
         <spring.cloud.version>2022.0.1</spring.cloud.version>
+        <image>farzadafi/${project.artifactId}:${project.version}</image>
     </properties>
 
     <dependencyManagement>
@@ -86,6 +87,31 @@
                             </goals>
                         </execution>
                     </executions>
+                </plugin>
+                <plugin>
+                    <groupId>com.google.cloud.tools</groupId>
+                    <artifactId>jib-maven-plugin</artifactId>
+                    <version>2.3.0</version>
+                    <configuration>
+                        <from>
+                            <image>eclipse-temurin:17</image>
+                            <platforms>
+                                <platform>
+                                    <architecture>arm64</architecture>
+                                    <os>linux</os>
+                                </platform>
+                                <platform>
+                                    <architecture>amd64</architecture>
+                                    <os>linux</os>
+                                </platform>
+                            </platforms>
+                        </from>
+                        <to>
+                            <tags>
+                                <tag>latest</tag>
+                            </tags>
+                        </to>
+                    </configuration>
                 </plugin>
             </plugins>
         </pluginManagement>
