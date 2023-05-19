@@ -112,6 +112,14 @@
                             </tags>
                         </to>
                     </configuration>
+                    <executions>
+                        <execution>
+                            <phase>package</phase>
+                            <goals>
+                                <goal>build</goal> <!--how to build, loclally of registery-->
+                            </goals>
+                        </execution>
+                    </executions>
                 </plugin>
             </plugins>
         </pluginManagement>
