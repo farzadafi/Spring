@@ -9,7 +9,7 @@
         <version>0.0.1-SNAPSHOT</version>
     </parent>
 
-    <artifactId>ApiGateway</artifactId>
+    <artifactId>apigateway</artifactId>
     <packaging>jar</packaging>
 
     <build>
