@@ -74,6 +74,22 @@ services:
       - postgres
       - rabbitmq
 
+  fraud:
+    image: farzadafi/fraud:latest
+    container_name: fraud
+    ports:
+      - "8081:8081"
+    environment:
+      - SPRING_PROFILES_ACTIVE=docker
+    networks:
+      - spring
+      - postgres
+    depends_on:
+      - zipkin
+      - eureka-server
+      - postgres
+      - rabbitmq
+
 networks:
   postgres:
     driver: bridge
