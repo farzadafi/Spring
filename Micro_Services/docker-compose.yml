@@ -106,6 +106,19 @@ services:
       - postgres
       - rabbitmq
 
+  api-gateway:
+    image: farzadafi/apigateway:latest
+    container_name: api-gateway
+    ports:
+      - "8083:8083"
+    environment:
+      - SPRING_PROFILES_ACTIVE=docker
+    networks:
+      - spring
+    depends_on:
+      - zipkin
+      - eureka-server
+
 networks:
   postgres:
     driver: bridge
