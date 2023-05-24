@@ -95,7 +95,7 @@ server.port=8888
 spring.cloud.config.server.git.uri=file:///home/farzad/Desktop/fileLinux/Maktab/Tamrin/Spring/Spring_Cloud/2_MicroService_SpringCloud/git-localconfig-repo
 ```
 
-and then in target resources property(auto configuration spring boot file)
+and then in target resources property(configuration spring boot file)
 we should to add this property:
 
 ```properties
@@ -117,3 +117,14 @@ configuration.
 For example, if you have a Spring Boot application named "customer-service" and you have set its spring.application.name
 property to "customer-service", then the corresponding configuration file in your Git repository should be named "
 customer-service.properties" or "customer-service.yml", depending on the format you are using.
+
+### have more than one .properties file for different profile
+
+if you want to have more than one .properties file for different profile
+first you have to add these property to target spring boot app:
+```properties
+spring.profiles.active=profile_name
+spring.cloud.config.profile=profile_name
+```
+then you add a new application-profile_name.properties file to 
+git local config directory
