@@ -60,3 +60,49 @@ are compatible with each other.
 5. **Limited support for non-RESTFul APIs**: OpenFeign is designed to work with RESTful APIs and may not be suitable for other
 types of APIs, such as SOAP or GraphQL. In these cases, it may be necessary to use a different client library or
 write custom code.
+
+### Start With Feign :
+
+first step is add open feign dependency to pom.xml file:
+```xml
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-openfeign</artifactId>
+        </dependency>
+```
+
+add annotation @EnableFeignClients to main Spring boot app like this:
+
+```java
+
+@SpringBootApplication
+@EnableFeignClients // <----
+public class CurrencyConversionServiceApplication {
+
+    public static void main(String[] args) {
+        SpringApplication.run(CurrencyConversionServiceApplication.class, args);
+    }
+}
+```
+and then create a interface with a name :), for example here is 
+CurrencyExchangeProxy and add annotation @FeignClient :(I dont have eureka here)
+
+```java
+@FeignClient(name = "currency-exchange-service", url = "localhost:8000") 
+public interface CurrencyExchangeProxy {
+}
+```
+
+name and port is name and port of microservice, the same name and port we enter on application.properties
+file :
+```properties
+spring.application.name=currency-exchange-service
+server.port=8000
+```
+
+and add a method for use it like this:
+```java
+@GetMapping("/currency-exchange/from/{from}/to/{to}")
+    CurrencyExchange getExchange(@PathVariable String from, @PathVariable String to);
+```
+
