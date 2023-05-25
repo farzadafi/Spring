@@ -102,6 +102,13 @@ we should to add this property:
 spring.server.name=customer-service
 spring.config.import=optional:configserver:http://localhost:8888
 ```
+add this to pom.xml file:
+```xml
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-config</artifactId>
+        </dependency>
+```
 
 and then add a file with name **customer-service** in
 git uri directory that's create is before step for keep all config files
