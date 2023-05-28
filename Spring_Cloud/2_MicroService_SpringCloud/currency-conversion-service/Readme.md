@@ -41,34 +41,42 @@ the Spring Cloud suite.
 
 ### Disadvantage
 
-1. **Limited flexibility**: OpenFeign provides a declarative way to define API clients, but this can be limiting in some cases
-where more fine-grained control over the request and response is needed. In these cases, it may be necessary to use a
-lower-level HTTP client library.
+1. **Limited flexibility**: OpenFeign provides a declarative way to define API clients, but this can be limiting in some
+   cases
+   where more fine-grained control over the request and response is needed. In these cases, it may be necessary to use a
+   lower-level HTTP client library.
 
 2. **Performance overhead**: The use of OpenFeign can introduce additional performance overhead, especially for large or
-complex API requests, due to the dynamic generation of the client implementation at runtime. This can be mitigated by
-optimizing the configuration and tuning the performance settings, but it still adds an extra layer of complexity.
+   complex API requests, due to the dynamic generation of the client implementation at runtime. This can be mitigated by
+   optimizing the configuration and tuning the performance settings, but it still adds an extra layer of complexity.
 
-3. **Learning curve**: While OpenFeign is relatively easy to use and integrates well with Spring Boot, it still requires some
-familiarity with the Spring Cloud ecosystem and its configuration model. This can be a learning curve for developers who
-are new to Spring Cloud.
+3. **Learning curve**: While OpenFeign is relatively easy to use and integrates well with Spring Boot, it still requires
+   some
+   familiarity with the Spring Cloud ecosystem and its configuration model. This can be a learning curve for developers
+   who
+   are new to Spring Cloud.
 
-4. **Dependency management**: OpenFeign has its own set of dependencies and can introduce version conflicts or compatibility
-issues with other libraries in your project. It's important to carefully manage your dependencies and ensure that they
-are compatible with each other.
+4. **Dependency management**: OpenFeign has its own set of dependencies and can introduce version conflicts or
+   compatibility
+   issues with other libraries in your project. It's important to carefully manage your dependencies and ensure that
+   they
+   are compatible with each other.
 
-5. **Limited support for non-RESTFul APIs**: OpenFeign is designed to work with RESTful APIs and may not be suitable for other
-types of APIs, such as SOAP or GraphQL. In these cases, it may be necessary to use a different client library or
-write custom code.
+5. **Limited support for non-RESTFul APIs**: OpenFeign is designed to work with RESTful APIs and may not be suitable for
+   other
+   types of APIs, such as SOAP or GraphQL. In these cases, it may be necessary to use a different client library or
+   write custom code.
 
 ### Start With Feign :
 
 first step is add open feign dependency to pom.xml file:
+
 ```xml
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-openfeign</artifactId>
-        </dependency>
+
+<dependency>
+    <groupId>org.springframework.cloud</groupId>
+    <artifactId>spring-cloud-starter-openfeign</artifactId>
+</dependency>
 ```
 
 add annotation @EnableFeignClients to main Spring boot app like this:
@@ -84,25 +92,43 @@ public class CurrencyConversionServiceApplication {
     }
 }
 ```
-and then create a interface with a name :), for example here is 
+
+and then create a interface with a name :), for example here is
 CurrencyExchangeProxy and add annotation @FeignClient :(I dont have eureka here)
 
 ```java
-@FeignClient(name = "currency-exchange-service", url = "localhost:8000") 
+
+@FeignClient(name = "currency-exchange-service", url = "localhost:8000")
 public interface CurrencyExchangeProxy {
 }
 ```
 
-name and port is name and port of microservice, the same name and port we enter on application.properties
+name and port is name and port of target microservice(that we want to send request), the same name and port we enter on
+application.properties
 file :
+
 ```properties
 spring.application.name=currency-exchange-service
 server.port=8000
 ```
 
 and add a method for use it like this:
+
 ```java
 @GetMapping("/currency-exchange/from/{from}/to/{to}")
-    CurrencyExchange getExchange(@PathVariable String from, @PathVariable String to);
+    CurrencyExchange getExchange(@PathVariable String from,@PathVariable String to);
 ```
 
+and the last step inject this interface in the controller and use from it :
+
+```java
+@Autowired
+private CurrencyExchangeProxy proxy;
+```
+
+in body of method :
+```java
+var result = proxy.getExchange(from, to);
+```
+
+That's it :-)
