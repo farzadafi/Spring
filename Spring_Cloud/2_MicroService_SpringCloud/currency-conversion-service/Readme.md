@@ -99,6 +99,7 @@ CurrencyExchangeProxy and add annotation @FeignClient :(I dont have eureka here)
 ```java
 
 @FeignClient(name = "currency-exchange-service", url = "localhost:8000")
+//@FeignClient(name = "currency-exchange-service") // if you have eureka server! write just name of microService
 public interface CurrencyExchangeProxy {
 }
 ```
