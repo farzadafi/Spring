@@ -92,6 +92,8 @@ can **still communicate** with each other and continue to provide service discov
    spring.application.name=naming-server
    server.port=8761
    
-   eureka.client.register-with-eureka=false
-   eureka.client.fetch-registery=false
+   eureka.client.register-with-eureka=false #disables the automatic registration of a service instance with the Eureka Server in a microservices architecture.
+   eureka.client.fetch-registery=false #disables the fetching of the service registry from the Eureka Server by the Eureka client in a microservices architecture.
 ```
+
+Thats it, your eureka server is Ready to start
