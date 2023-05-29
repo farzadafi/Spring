@@ -94,6 +94,35 @@ can **still communicate** with each other and continue to provide service discov
    
    eureka.client.register-with-eureka=false #disables the automatic registration of a service instance with the Eureka Server in a microservices architecture.
    eureka.client.fetch-registery=false #disables the fetching of the service registry from the Eureka Server by the Eureka client in a microservices architecture.
-```
+   ```
+That's it, your eureka server is Ready and you can start it and go to localhost:8761 for test eureka is work or not
 
-Thats it, your eureka server is Ready to start
+
+##### connect target microService to Eureka Server steps:
+
+1. Add this dependency to pom.xml file:
+   ```xml
+           <dependency>
+               <groupId>org.springframework.cloud</groupId>
+               <artifactId>spring-cloud-netflix-eureka-client</artifactId>
+           </dependency>
+   ```
+2. Add this property to application.properties file:
+   ```properties
+   eureka.client.serviceUrl.defaultZone=http://eureka-server:8761/eureka
+   ```
+3. And the last step is add @EnableDiscoveryClient to main class :
+   ```java
+    @SpringBootApplication
+    @EnableFeignClients
+    @EnableDiscoveryClient // <-------------
+    public class CurrencyConversionServiceApplication {
+    
+        public static void main(String[] args) {
+            SpringApplication.run(CurrencyConversionServiceApplication.class, args);
+        }
+    }
+    ```
+   
+That's it, now when you start target microService and go to localhost:8761, you must see your 
+target microService that's successful find eureka server and add to it :)
