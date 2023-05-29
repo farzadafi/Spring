@@ -65,3 +65,33 @@ can **still communicate** with each other and continue to provide service discov
    that additional security measures may need to be implemented to protect the service registry and the services that
    use
    it.
+
+### How to Implement and Create step by step :
+
+1. Create a Spring Boot app
+2. Add this dependency for Eureka server:
+   ```xml
+           <dependency>
+               <groupId>org.springframework.cloud</groupId>
+               <artifactId>spring-cloud-starter-netflix-eureka-server</artifactId>
+           </dependency>
+   ```
+3. Add this annotation to class has main method:
+   ```java
+   @EnableEurekaServer // <----------
+   @SpringBootApplication
+   public class NamingServerApplication {
+   
+       public static void main(String[] args) {
+           SpringApplication.run(NamingServerApplication.class, args);
+       }
+   }
+   ```
+4. Add these property for application.properties file
+   ```properties
+   spring.application.name=naming-server
+   server.port=8761
+   
+   eureka.client.register-with-eureka=false
+   eureka.client.fetch-registery=false
+```
