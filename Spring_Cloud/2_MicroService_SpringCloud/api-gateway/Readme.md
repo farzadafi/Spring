@@ -31,6 +31,39 @@ Some key features of Spring Cloud Gateway are:
 
 5. **Security**: Provides a range of security features such as JWT authentication, OAuth2, and SSL.
 
+### How to config and use from spring gateway:
+
+1. Add this to pom.xml
+   ```xml
+   <dependency>
+       <groupId>org.springframework.cloud</groupId>
+       <artifactId>spring-cloud-starter-gateway</artifactId>
+   </dependency>
+   ```
+2. If you use from Eureka server too, add this:
+   ```xml
+   <dependency>
+       <groupId>org.springframework.cloud</groupId>
+       <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+   </dependency>
+   ```
+3. Add these property for name, port and eureka server URL to application.properties file:
+   ```properties
+   spring.application.name=api-gateway
+   server.port=8765
+   
+   eureka.client.serverUrl.defaultZone=http://localhost:8761/eureka # this is default url, you can dont write it
+   ```
+4. If you use from Eureka server add this to class that has main method:
+   ```java
+   @SpringBootApplication
+   @EnableDiscoveryClient // <------------------
+   public class ApiGatewayApplication {
+       public static void main(String[] args) {
+           SpringApplication.run(ApiGatewayApplication.class, args);
+       }
+   }
+   ```
 
 
 
