@@ -1,0 +1,36 @@
+# Spring Cloud Gateway :)
+
+Spring Cloud Gateway is a **lightweight**, **developer-friendly**, **open-source API Gateway**
+built on top of *Spring Framework 5*, *Spring Boot 2*, and Project Reactor.
+
+***API Gateway*** is an *entry point* for all the client's requests. It is a type of *reverse proxy* that routes
+requests from
+*clients* to the appropriate **microservices**. It is responsible for handling API requests, routing them to the
+appropriate
+microservices, and returning the response back to the client.
+
+***Spring Cloud Gateway*** provides a simple and powerful API that allows developers to define *routes*, *filter
+requests*, and
+*handle errors easily*. It also provides features like **load balancing**, **service discovery**, **rate limiting**, and
+**circuit
+breaking** that are essential for building scalable and resilient microservices architectures.
+
+Some key features of Spring Cloud Gateway are:
+
+1. **Dynamic routing**: Allows you to route requests based on headers, cookies, and other attributes.
+
+2. **Load balancing**: Provides a pluggable load balancer implementation that can distribute traffic across multiple
+   instances
+   of a service.
+
+3. **Circuit breaking**: Helps to prevent cascading failures by breaking the circuit when a downstream service fails.
+
+4. **Service discovery**: Integrates with service discovery tools like Eureka, Consul, and Kubernetes to dynamically
+   discover
+   services.
+
+5. **Security**: Provides a range of security features such as JWT authentication, OAuth2, and SSL.
+
+
+
+
