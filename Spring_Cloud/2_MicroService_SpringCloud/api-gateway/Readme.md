@@ -64,6 +64,19 @@ Some key features of Spring Cloud Gateway are:
        }
    }
    ```
+5. Add this property for when this property is set to true, Spring Cloud Gateway uses the service registry to
+   dynamically discover services and routes requests to the appropriate instance of the service based on the service's
+   metadata.
+   ```properties
+   spring.cloud.gateway.discovery.locator.enabled=true
+   ```
+6. Add this property for By default, when Spring Cloud Gateway uses service discovery to locate services, it uses the
+   service ID as the route ID. However, some service registries may have service IDs with uppercase letters, which can
+   cause issues with routing. Setting lowerCaseServiceId to true converts the service ID to lowercase, ensuring that the
+   route ID is always in lowercase.
+   ```properties
+   spring.cloud.gateway.discovery.locator.lowerCaseServiceId=true
+   ```
 
 
 
