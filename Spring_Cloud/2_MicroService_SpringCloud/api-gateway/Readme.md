@@ -78,33 +78,42 @@ Some key features of Spring Cloud Gateway are:
    spring.cloud.gateway.discovery.locator.lowerCaseServiceId=true
    ```
 7. And you have to create a class and write some config fot path gateway as you want like this:
-```java
-
-import org.springframework.cloud.gateway.route.RouteLocator;
-import org.springframework.cloud.gateway.route.builder.RouteLocatorBuilder;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
-
-@Configuration
-public class ApiGatewayConfiguration {
-
-    @Bean
-    public RouteLocator gatewayRouter(RouteLocatorBuilder builder) {
-        return builder.routes()
-                .route(p -> p
-                        .path("/get")
-                        .uri("https://www.google.com"))
-                .route(p -> p
-                        .path("/currency-exchange/**")
-                        .uri("lb://currency-exchange-service"))
-                .route(p -> p
-                        .path("/conversion/**")
-                        .uri("lb://currency-conversion-service"))
-                .route(p -> p
-                        .path("/conversion-feign/**")
-                        .uri("lb://currency-conversion-service"))
-                .build();
+   ```java
+    @Configuration
+    public class ApiGatewayConfiguration {
+    
+        @Bean
+        public RouteLocator gatewayRouter(RouteLocatorBuilder builder) {
+            return builder.routes()
+                    .route(p -> p
+                            .path("/get") //call with user
+                            .uri("https://www.google.com")) // redirect user to this path
+                    .route(p -> p
+                            .path("/currency-exchange/**")
+                            .uri("lb://currency-exchange-service"))
+                    .route(p -> p
+                            .path("/conversion/**")
+                            .uri("lb://currency-conversion-service"))
+                    .route(p -> p
+                            .path("/conversion-feign/**")
+                            .uri("lb://currency-conversion-service"))
+                    .build();
+        }
     }
+   ```
+8. If you want to have log for all request to API Gateway add this class:
+
+```java
+@Configuration
+public class LoggingFilter implements GlobalFilter {
+
+   private final Logger logger = LoggerFactory.getLogger(LoggingFilter.class);
+
+   @Override
+   public Mono<Void> filter(ServerWebExchange exchange, GatewayFilterChain chain) {
+      logger.info("Path of the request received -> {}", exchange.getRequest().getPath());
+      return chain.filter(exchange);
+   }
 }
 ```
 
