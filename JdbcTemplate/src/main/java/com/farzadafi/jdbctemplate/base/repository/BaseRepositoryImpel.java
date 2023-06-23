@@ -3,7 +3,6 @@ package com.farzadafi.jdbctemplate.base.repository;
 import com.farzadafi.jdbctemplate.base.model.BaseEntity;
 import org.springframework.jdbc.core.BatchPreparedStatementSetter;
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.stereotype.Repository;
 
 import java.io.Serializable;
 import java.sql.PreparedStatement;
@@ -11,7 +10,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 
-@Repository
 public abstract class BaseRepositoryImpel<ID extends Serializable, TYPE extends BaseEntity<ID>>
         implements BaseRepository<ID, TYPE> {
 
