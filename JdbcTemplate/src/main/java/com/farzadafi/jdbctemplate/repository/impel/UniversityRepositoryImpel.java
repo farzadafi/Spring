@@ -11,7 +11,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 @Repository
-public class UniversityRepositoryImpel extends BaseRepositoryImpel<Integer, University> implements UniversityRepository {
+public class UniversityRepositoryImpel extends BaseRepositoryImpel<Long, University> implements UniversityRepository {
     protected UniversityRepositoryImpel(JdbcTemplate jdbcTemplate) {
         super(jdbcTemplate);
     }
