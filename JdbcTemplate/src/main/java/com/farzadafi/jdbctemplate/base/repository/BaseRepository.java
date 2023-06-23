@@ -4,17 +4,16 @@ import com.farzadafi.jdbctemplate.base.model.BaseEntity;
 import org.springframework.jdbc.core.BatchPreparedStatementSetter;
 
 import java.io.Serializable;
-import java.sql.SQLException;
 import java.util.List;
 
 public interface BaseRepository<ID extends Serializable, TYPE extends BaseEntity<ID>> {
-    void save(TYPE entity) throws SQLException;
+    void save(TYPE entity);
 
-    void saveAll(List<TYPE> entities, BatchPreparedStatementSetter setter) throws SQLException;
+    void saveAll(List<TYPE> entities, BatchPreparedStatementSetter setter);
 
-    TYPE findById(ID id) throws SQLException;
+    TYPE findById(ID id);
 
-    List<TYPE> findAll() throws SQLException;
+    List<TYPE> findAll();
 
-    void update(TYPE entity) throws SQLException;
+    void update(TYPE entity);
 }

@@ -20,28 +20,28 @@ public abstract class BaseRepositoryImpel<ID extends Serializable, TYPE extends 
     }
 
     @Override
-    public void save(TYPE entity) throws SQLException {
+    public void save(TYPE entity) {
 
     }
 
     @Override
-    public void saveAll(List<TYPE> entities, BatchPreparedStatementSetter setter) throws SQLException {
+    public void saveAll(List<TYPE> entities, BatchPreparedStatementSetter setter) {
         String sql = "INSERT INTO " + getTableName() + " " + getColumnsName() + " VALUES " + getCountOfQuestionMarkForParams() + "";
         jdbcTemplate.batchUpdate(sql, setter);
     }
 
     @Override
-    public TYPE findById(ID id) throws SQLException {
+    public TYPE findById(ID id) {
         return null;
     }
 
     @Override
-    public List<TYPE> findAll() throws SQLException {
+    public List<TYPE> findAll() {
         return null;
     }
 
     @Override
-    public void update(TYPE entity) throws SQLException {
+    public void update(TYPE entity) {
 
     }
 
