@@ -24,6 +24,8 @@ public abstract class BaseRepositoryImpel<ID extends Serializable, TYPE extends 
 
     public abstract String getColumnsName();
 
+    public abstract String getUpdateQueryParams();
+
     public abstract String getCountOfQuestionMarkForParams();
 
     public abstract TYPE mapResultSetToEntity(ResultSet resultSet) throws SQLException;
