@@ -7,6 +7,7 @@ import java.io.Serializable;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.List;
 
 public abstract class BaseRepositoryImpel<ID extends Serializable, TYPE extends BaseEntity<ID>>
         implements BaseRepository<ID, TYPE> {
@@ -18,6 +19,16 @@ public abstract class BaseRepositoryImpel<ID extends Serializable, TYPE extends 
     @Override
     public TYPE findById(ID id) throws SQLException {
         return null;
+    }
+
+    @Override
+    public List<TYPE> findAll() throws SQLException {
+        return null;
+    }
+
+    @Override
+    public void update(TYPE entity) throws SQLException {
+
     }
 
     public abstract String getTableName();
