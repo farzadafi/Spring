@@ -1,7 +1,9 @@
-package com.farzadafi.jdbctemplate.repository.impel;
+package com.farzadafi.jdbctemplate.base.repository;
 
-import com.farzadafi.jdbctemplate.entity.base.BaseEntity;
-import com.farzadafi.jdbctemplate.repository.BaseRepository;
+import com.farzadafi.jdbctemplate.base.model.BaseEntity;
+import org.springframework.jdbc.core.BatchPreparedStatementSetter;
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.stereotype.Repository;
 
 import java.io.Serializable;
 import java.sql.PreparedStatement;
@@ -9,8 +11,15 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 
+@Repository
 public abstract class BaseRepositoryImpel<ID extends Serializable, TYPE extends BaseEntity<ID>>
         implements BaseRepository<ID, TYPE> {
+
+    private final JdbcTemplate jdbcTemplate;
+
+    protected BaseRepositoryImpel(JdbcTemplate jdbcTemplate) {
+        this.jdbcTemplate = jdbcTemplate;
+    }
 
     @Override
     public void save(TYPE entity) throws SQLException {
@@ -18,8 +27,9 @@ public abstract class BaseRepositoryImpel<ID extends Serializable, TYPE extends 
     }
 
     @Override
-    public void saveAll(List<TYPE> entities) throws SQLException {
-
+    public void saveAll(List<TYPE> entities, BatchPreparedStatementSetter setter) throws SQLException {
+        String sql = "INSERT INTO " + getTableName() + " " + getColumnsName() + " VALUES " + getCountOfQuestionMarkForParams() + "";
+        jdbcTemplate.batchUpdate(sql, setter);
     }
 
     @Override
