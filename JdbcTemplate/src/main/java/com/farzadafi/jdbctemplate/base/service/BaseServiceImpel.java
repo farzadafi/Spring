@@ -2,15 +2,12 @@ package com.farzadafi.jdbctemplate.base.service;
 
 import com.farzadafi.jdbctemplate.base.model.BaseEntity;
 import com.farzadafi.jdbctemplate.base.repository.BaseRepository;
-import com.farzadafi.jdbctemplate.base.service.BaseService;
 import org.springframework.jdbc.core.BatchPreparedStatementSetter;
-import org.springframework.stereotype.Service;
 
 import java.io.Serializable;
 import java.sql.SQLException;
 import java.util.List;
 
-@Service
 public class BaseServiceImpel<ID extends Serializable, TYPE extends BaseEntity<ID>,
         R extends BaseRepository<ID, TYPE>>
         implements BaseService<ID, TYPE> {
