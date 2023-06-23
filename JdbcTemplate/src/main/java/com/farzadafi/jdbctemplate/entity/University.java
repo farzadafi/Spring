@@ -1,5 +1,6 @@
 package com.farzadafi.jdbctemplate.entity;
 
+import com.farzadafi.jdbctemplate.base.model.BaseEntity;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -11,10 +12,7 @@ import java.util.List;
 @NoArgsConstructor
 @Builder
 @Entity
-public class University {
-    @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    private Long id;
+public class University extends BaseEntity<Integer> {
 
     private String name;
 
@@ -22,4 +20,11 @@ public class University {
 
     @OneToMany(mappedBy = "university", cascade = CascadeType.ALL)
     private List<Classroom> classrooms;
+
+    public University(int id, String name, String address, List<Classroom> classrooms) {
+        super(id);
+        this.name = name;
+        this.address = address;
+        this.classrooms = classrooms;
+    }
 }
