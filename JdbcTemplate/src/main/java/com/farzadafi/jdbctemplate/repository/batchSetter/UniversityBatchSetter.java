@@ -18,7 +18,7 @@ public class UniversityBatchSetter implements BatchPreparedStatementSetter {
     @Override
     public void setValues(PreparedStatement ps, int i) throws SQLException {
         University university = universities.get(i);
-        ps.setInt(1, university.getId());
+        ps.setLong(1, university.getId());
         ps.setString(2, university.getName());
         ps.setString(3, university.getAddress());
     }
