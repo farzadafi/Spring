@@ -10,9 +10,9 @@ import java.util.List;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@Builder
+@Builder(toBuilder = true)
 @Entity
-public class University extends BaseEntity<Integer> {
+public class University extends BaseEntity<Long> {
 
     private String name;
 
@@ -21,7 +21,7 @@ public class University extends BaseEntity<Integer> {
     @OneToMany(mappedBy = "university", cascade = CascadeType.ALL)
     private List<Classroom> classrooms;
 
-    public University(int id, String name, String address, List<Classroom> classrooms) {
+    public University(long id, String name, String address, List<Classroom> classrooms) {
         super(id);
         this.name = name;
         this.address = address;
