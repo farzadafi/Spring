@@ -9,6 +9,8 @@ import java.util.List;
 public interface BaseRepository<ID extends Serializable, TYPE extends BaseEntity<ID>> {
     void save(TYPE entity) throws SQLException;
 
+    void saveAll(List<TYPE> entities) throws SQLException;
+
     TYPE findById(ID id) throws SQLException;
 
     List<TYPE> findAll() throws SQLException;

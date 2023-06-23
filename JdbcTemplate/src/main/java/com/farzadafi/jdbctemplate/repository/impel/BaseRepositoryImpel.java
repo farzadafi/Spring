@@ -11,8 +11,14 @@ import java.util.List;
 
 public abstract class BaseRepositoryImpel<ID extends Serializable, TYPE extends BaseEntity<ID>>
         implements BaseRepository<ID, TYPE> {
+
     @Override
     public void save(TYPE entity) throws SQLException {
+
+    }
+
+    @Override
+    public void saveAll(List<TYPE> entities) throws SQLException {
 
     }
 
