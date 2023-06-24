@@ -28,6 +28,6 @@ public class UniversityServiceImpel extends BaseServiceImpel<Long, University, U
             university.setId((long) i);
             universities.add(university);
         }
-        saveAll(universities, new UniversityBatchSetter(universities));
+        saveAll(new UniversityBatchSetter(universities));
     }
 }
