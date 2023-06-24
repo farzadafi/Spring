@@ -3,6 +3,8 @@ package com.farzadafi.jdbctemplate.base.repository;
 import com.farzadafi.jdbctemplate.base.model.BaseEntity;
 import org.springframework.jdbc.core.BatchPreparedStatementSetter;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.PreparedStatementSetter;
+import org.springframework.jdbc.core.ResultSetExtractor;
 
 import java.io.Serializable;
 import java.sql.PreparedStatement;
@@ -32,7 +34,17 @@ public abstract class BaseRepositoryImpel<ID extends Serializable, TYPE extends 
 
     @Override
     public TYPE findById(ID id) {
-        return null;
+        String sql = "SELECT * FROM " + getTableName() + " WHERE id=?";
+        PreparedStatementSetter preparedStatementSetter = (preparedStatement) -> {
+            preparedStatement.setLong(1,(long) id);
+        };
+        ResultSetExtractor<TYPE> resultSetExtractor = (resultSet) -> {
+            if (resultSet.next()) {
+                return mapResultSetToEntity(resultSet);
+            }else
+                return null;
+        };
+        return jdbcTemplate.query(sql, preparedStatementSetter, resultSetExtractor);
     }
 
     @Override
