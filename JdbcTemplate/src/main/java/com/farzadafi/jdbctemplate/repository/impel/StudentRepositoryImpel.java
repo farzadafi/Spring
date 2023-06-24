@@ -4,11 +4,12 @@ import com.farzadafi.jdbctemplate.base.repository.BaseRepositoryImpel;
 import com.farzadafi.jdbctemplate.entity.Student;
 import com.farzadafi.jdbctemplate.repository.StudentRepository;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.stereotype.Repository;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 
+@Repository
 public class StudentRepositoryImpel extends BaseRepositoryImpel<Long, Student>
     implements StudentRepository {
 
@@ -33,11 +34,11 @@ public class StudentRepositoryImpel extends BaseRepositoryImpel<Long, Student>
 
     @Override
     public String getCountOfQuestionMarkForParams() {
-        return "?, ?, ?, ?, ?, ?";
+        return "(?, ?, ?, ?, ?, ?)";
     }
 
     @Override
-    public Student mapResultSetToEntity(ResultSet resultSet) throws SQLException {
+    public Student mapResultSetToEntity(ResultSet resultSet) {
         return null;
     }
 
