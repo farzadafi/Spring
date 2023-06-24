@@ -43,7 +43,6 @@ public class UniversityServiceImpel extends BaseServiceImpel<Long, University, U
         JsonGenerator jsonGenerator = objectMapper.getFactory().createGenerator(new FileWriter("universities.json"));
         jsonGenerator.writeStartArray();
         List<University> allUniversity = repository.findAllWithRowMapper();
-        System.out.println(allUniversity.size());
         for (University record : allUniversity) {
             objectMapper.writeValue(jsonGenerator, record);
         }
