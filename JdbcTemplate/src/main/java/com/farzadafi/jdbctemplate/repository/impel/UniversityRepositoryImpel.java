@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.List;
 
 @Repository
@@ -44,8 +45,13 @@ public class UniversityRepositoryImpel extends BaseRepositoryImpel<Long, Univers
     }
 
     @Override
-    public University mapResultSetToEntity(ResultSet resultSet) {
-        return null;
+    public University mapResultSetToEntity(ResultSet resultSet) throws SQLException {
+        University university = University.builder()
+                .name(resultSet.getString("name"))
+                .address(resultSet.getString("address"))
+                .build();
+        university.setId(resultSet.getLong("id"));
+        return university;
     }
 
     @Override
