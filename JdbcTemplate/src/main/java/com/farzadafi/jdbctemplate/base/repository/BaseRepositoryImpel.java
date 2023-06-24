@@ -10,6 +10,7 @@ import java.io.Serializable;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 public abstract class BaseRepositoryImpel<ID extends Serializable, TYPE extends BaseEntity<ID>>
@@ -36,12 +37,12 @@ public abstract class BaseRepositoryImpel<ID extends Serializable, TYPE extends 
     public TYPE findById(ID id) {
         String sql = "SELECT * FROM " + getTableName() + " WHERE id=?";
         PreparedStatementSetter preparedStatementSetter = (preparedStatement) -> {
-            preparedStatement.setLong(1,(long) id);
+            preparedStatement.setLong(1, (long) id);
         };
         ResultSetExtractor<TYPE> resultSetExtractor = (resultSet) -> {
             if (resultSet.next()) {
                 return mapResultSetToEntity(resultSet);
-            }else
+            } else
                 return null;
         };
         return jdbcTemplate.query(sql, preparedStatementSetter, resultSetExtractor);
@@ -49,7 +50,16 @@ public abstract class BaseRepositoryImpel<ID extends Serializable, TYPE extends 
 
     @Override
     public List<TYPE> findAll() {
-        return null;
+        String sql = " SELECT * FROM " + getTableName();
+        PreparedStatementSetter preparedStatementSetter = (preparedStatement) -> {};
+        List<TYPE> entities = new ArrayList<>();
+        ResultSetExtractor<List<TYPE>> resultSetExtractor = (resultSet) -> {
+            while (resultSet.next()) {
+                entities.add(mapResultSetToEntity(resultSet));
+            }
+            return entities;
+        };
+        return jdbcTemplate.query(sql, preparedStatementSetter, resultSetExtractor);
     }
 
     @Override
