@@ -5,8 +5,12 @@ import com.farzadafi.jdbctemplate.entity.University;
 import com.farzadafi.jdbctemplate.repository.UniversityRepository;
 import com.farzadafi.jdbctemplate.repository.batchSetter.UniversityBatchSetter;
 import com.farzadafi.jdbctemplate.service.UniversityService;
+import com.fasterxml.jackson.core.JsonGenerator;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.stereotype.Service;
 
+import java.io.FileWriter;
+import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
@@ -15,8 +19,11 @@ import java.util.List;
 public class UniversityServiceImpel extends BaseServiceImpel<Long, University, UniversityRepository>
         implements UniversityService {
 
-    public UniversityServiceImpel(UniversityRepository repository) {
+    private final ObjectMapper objectMapper;
+
+    public UniversityServiceImpel(UniversityRepository repository, ObjectMapper objectMapper) {
         super(repository);
+        this.objectMapper = objectMapper;
     }
 
     public void insertData() throws SQLException {
@@ -29,5 +36,19 @@ public class UniversityServiceImpel extends BaseServiceImpel<Long, University, U
             universities.add(university);
         }
         saveAll(new UniversityBatchSetter(universities));
+    }
+
+    @Override
+    public void fetchAndSaveInFile() throws IOException {
+        JsonGenerator jsonGenerator = objectMapper.getFactory().createGenerator(new FileWriter("universities.json"));
+        jsonGenerator.writeStartArray();
+        List<University> allUniversity = repository.findAllWithRowMapper();
+        System.out.println(allUniversity.size());
+        for (University record : allUniversity) {
+            objectMapper.writeValue(jsonGenerator, record);
+        }
+        jsonGenerator.writeEndArray();
+        jsonGenerator.flush();
+        jsonGenerator.close();
     }
 }
