@@ -13,19 +13,17 @@ import java.util.ArrayList;
 
 @Service
 public class StudentServiceImpel extends BaseServiceImpel<Long, Student, StudentRepository>
-    implements StudentService {
+        implements StudentService {
 
     public StudentServiceImpel(StudentRepository repository) {
         super(repository);
     }
 
-    // todo fix classroom
     @Override
     public void createAndInsert() throws SQLException {
         long counter = 1;
         for (int i = 1; i < 100000; i++) { // 100000 - 10
             ArrayList<Student> students = new ArrayList<>();
-//            Classroom classroom = classroomService.getById((long) i);
             Classroom classroom = new Classroom();
             classroom.setId((long) i);
             for (int j = 1; j <= 10; j++) { // 10 - 3
