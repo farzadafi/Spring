@@ -19,13 +19,11 @@ public class ClassroomServiceImpel extends BaseServiceImpel<Long, Classroom, Cla
         super(repository);
     }
 
-    //todo fix it
     @Override
     public void createAndInsert() throws SQLException {
         long counter = 1;
         for (int j = 1; j <= 10; j++) {
             ArrayList<Classroom> classrooms = new ArrayList<>();
-//            University university = universityService.getById((long) j);
             University university = new University();
             university.setId((long) j);
             for (int i = 1; i <= 10000; i++) { // 10000 - 10
