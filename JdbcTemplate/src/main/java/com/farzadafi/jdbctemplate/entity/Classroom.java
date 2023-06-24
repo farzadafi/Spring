@@ -1,5 +1,6 @@
 package com.farzadafi.jdbctemplate.entity;
 
+import com.farzadafi.jdbctemplate.base.model.BaseEntity;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
@@ -12,11 +13,7 @@ import java.util.ArrayList;
 @NoArgsConstructor
 @Builder
 @Entity
-public class Classroom {
-    @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    private Long id;
-
+public class Classroom extends BaseEntity<Long> {
     private String name;
 
     private String title;
