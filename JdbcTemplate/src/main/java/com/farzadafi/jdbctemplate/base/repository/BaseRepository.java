@@ -9,7 +9,7 @@ import java.util.List;
 public interface BaseRepository<ID extends Serializable, TYPE extends BaseEntity<ID>> {
     void save(TYPE entity);
 
-    void saveAll(List<TYPE> entities, BatchPreparedStatementSetter setter);
+    void saveAll(BatchPreparedStatementSetter setter);
 
     TYPE findById(ID id);
 

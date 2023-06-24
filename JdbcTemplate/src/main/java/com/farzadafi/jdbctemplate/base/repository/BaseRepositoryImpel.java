@@ -25,7 +25,7 @@ public abstract class BaseRepositoryImpel<ID extends Serializable, TYPE extends 
     }
 
     @Override
-    public void saveAll(List<TYPE> entities, BatchPreparedStatementSetter setter) {
+    public void saveAll(BatchPreparedStatementSetter setter) {
         String sql = "INSERT INTO " + getTableName() + " " + getColumnsName() + " VALUES " + getCountOfQuestionMarkForParams() + "";
         jdbcTemplate.batchUpdate(sql, setter);
     }

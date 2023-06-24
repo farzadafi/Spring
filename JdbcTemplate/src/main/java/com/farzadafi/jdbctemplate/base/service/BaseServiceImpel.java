@@ -24,8 +24,8 @@ public class BaseServiceImpel<ID extends Serializable, TYPE extends BaseEntity<I
     }
 
     @Override
-    public void saveAll(List<TYPE> entities, BatchPreparedStatementSetter setter) throws SQLException {
-        repository.saveAll(entities, setter);
+    public void saveAll(BatchPreparedStatementSetter setter) throws SQLException {
+        repository.saveAll(setter);
     }
 
     @Override

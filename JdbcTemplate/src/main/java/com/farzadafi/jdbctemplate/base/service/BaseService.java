@@ -9,7 +9,7 @@ public interface BaseService <ID,TYPE>{
 
     void save(TYPE entity) throws SQLException;
 
-    void saveAll(List<TYPE> entities, BatchPreparedStatementSetter setter) throws SQLException;
+    void saveAll(BatchPreparedStatementSetter setter) throws SQLException;
 
     List<TYPE> findAll() throws SQLException;
 
