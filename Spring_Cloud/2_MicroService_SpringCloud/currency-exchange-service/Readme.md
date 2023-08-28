@@ -47,3 +47,32 @@ resumes. However, if the requests continue to fail, the ***circuit breaker*** re
    from exploiting vulnerabilities in individual services. By isolating and containing failed services, the circuit
    breaker
    can help prevent attacks from spreading throughout the system.
+
+## Resilience4j
+
+Resilience4j is a lightweight fault tolerance library designed for functional programming. Resilience4j provides
+higher-order functions (decorators) to enhance any functional interface, lambda expression or method reference with a
+Circuit Breaker, Rate Limiter, Retry or Bulkhead.
+
+[Resilience4j doc](https://resilience4j.readme.io/docs)
+
+#### How to config?
+1. add these dependency to pom.xml file:
+```xml
+
+<dependency>
+    <groupId>io.github.resilience4j</groupId>
+    <artifactId>resilience4j-spring-boot2</artifactId>
+</dependency>
+
+<dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-aop</artifactId>
+</dependency>
+
+<dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-actuator</artifactId>
+</dependency>
+```
+
