@@ -10,6 +10,8 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
 
+    <packaging>pom</packaging>
+
     <modules>
         <module>authorization-server</module>
     </modules>
