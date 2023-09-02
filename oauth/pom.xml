@@ -14,6 +14,8 @@
 
     <modules>
         <module>authorization-server</module>
+        <module>client-server</module>
+        <module>resources-server</module>
     </modules>
 
     <groupId>com.farzadafi</groupId>

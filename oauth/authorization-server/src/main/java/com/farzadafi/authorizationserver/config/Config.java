@@ -12,6 +12,7 @@ import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.oauth2.server.authorization.config.annotation.web.configuration.OAuth2AuthorizationServerConfiguration;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.oauth2.server.authorization.config.ProviderSettings;
 
 import java.security.KeyPair;
 import java.security.KeyPairGenerator;
@@ -20,7 +21,7 @@ import java.security.interfaces.RSAPrivateKey;
 import java.security.interfaces.RSAPublicKey;
 import java.util.UUID;
 
-@Configuration
+@Configuration(proxyBeanMethods = false)
 public class Config {
 
     @Bean
@@ -51,5 +52,12 @@ public class Config {
         KeyPairGenerator keyPairGenerator = KeyPairGenerator.getInstance("RSA");
         keyPairGenerator.initialize(2048);
         return keyPairGenerator.generateKeyPair();
+    }
+
+    @Bean
+    public ProviderSettings providerSettings() {
+        return ProviderSettings.builder()
+                .issuer("http://auth-server:9000")
+                .build();
     }
 }
