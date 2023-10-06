@@ -12,6 +12,7 @@
 
   <modules>
     <module>authorization-server</module>
+    <module>client-server</module>
   </modules>
 
   <properties>
