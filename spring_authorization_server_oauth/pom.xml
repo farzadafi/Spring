@@ -10,6 +10,10 @@
   <packaging>pom</packaging>
   <name>spring_authorization_server_oauth</name>
 
+  <modules>
+    <module>authorization-server</module>
+  </modules>
+
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <maven.compiler.source>17</maven.compiler.source>
