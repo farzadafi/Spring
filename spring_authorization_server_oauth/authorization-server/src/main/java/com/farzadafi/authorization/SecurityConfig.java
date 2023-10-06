@@ -30,7 +30,9 @@ public class SecurityConfig {
     @Order(2)
     public SecurityFilterChain appSecurityFilterChain(HttpSecurity http) throws Exception {
         http
-                .authorizeHttpRequests(request->request.anyRequest().authenticated())
+                .authorizeHttpRequests(request -> request
+                        .anyRequest()
+                        .authenticated())
                 .formLogin(Customizer.withDefaults())
         ;
         return http.build();
