@@ -1,4 +1,8 @@
 package com.farzadafi.springbase.service;
 
-public class StudentService {
+import com.farzadafi.springbase.model.Student;
+
+public interface StudentService {
+    void register(Student student);
+    Student findByStudentNumber(String studentNumber);
 }
