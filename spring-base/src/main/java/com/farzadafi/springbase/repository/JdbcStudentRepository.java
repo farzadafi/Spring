@@ -1,15 +1,18 @@
 package com.farzadafi.springbase.repository;
 
 import com.farzadafi.springbase.model.Student;
-import lombok.RequiredArgsConstructor;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.stereotype.Repository;
 
 import java.util.Optional;
 
-@SuppressWarnings("query")
-@RequiredArgsConstructor
+@Repository
 public class JdbcStudentRepository implements StudentRepository {
     private final JdbcTemplate jdbcTemplate;
+
+    public JdbcStudentRepository(JdbcTemplate jdbcTemplate) {
+        this.jdbcTemplate = jdbcTemplate;
+    }
 
     @Override
     public boolean existsByStudentNumber(String studentNumber) {
@@ -42,7 +45,7 @@ public class JdbcStudentRepository implements StudentRepository {
     @Override
     public Optional<Student> findByStudentNumber(String studentNumber) {
         String sql = """
-                select name,student_number 
+                select name,student_number
                 from student
                 where student_number = ?
                 """;
