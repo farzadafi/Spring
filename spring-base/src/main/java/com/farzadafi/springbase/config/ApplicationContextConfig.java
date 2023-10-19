@@ -3,6 +3,10 @@ package com.farzadafi.springbase.config;
 import com.farzadafi.springbase.repository.InMemoryStudentRepository;
 import com.farzadafi.springbase.repository.JdbcStudentRepository;
 import com.farzadafi.springbase.repository.StudentRepository;
+import com.farzadafi.springbase.service.LogEnabledStudentService;
+import com.farzadafi.springbase.service.StudentService;
+import com.farzadafi.springbase.service.StudentServiceImpel;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -43,13 +47,13 @@ public class ApplicationContextConfig {
 //        }
 //    }
 
-//    @Bean
-//    StudentService studentService(StudentRepository repository,
-//                                  @Value("${application.configs.log.enable}") boolean isLogEnabled) {
-//        StudentService studentService = new StudentServiceImpl(repository);
-//        if (isLogEnabled) studentService = new LogEnabledStudentService(studentService);
-//        return studentService;
-//    }
+    @Bean
+    StudentService studentService(StudentRepository repository,
+                                  @Value("${application.configs.log.enable}") boolean isLogEnabled) {
+        StudentService studentService = new StudentServiceImpel((JdbcStudentRepository) repository);
+        if (isLogEnabled) studentService = new LogEnabledStudentService(studentService);
+        return studentService;
+    }
 }
 
 
