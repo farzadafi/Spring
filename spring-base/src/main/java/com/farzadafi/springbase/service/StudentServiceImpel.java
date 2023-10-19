@@ -17,7 +17,6 @@ public class StudentServiceImpel implements StudentService {
     @Override
     @PostConstruct
     public void register() {
-        System.out.println("farzad");
         Student student = new Student(null, "farzad", "3033333333");
         repository.save(student);
     }
