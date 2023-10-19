@@ -2,11 +2,9 @@ package com.farzadafi.springbase.repository;
 
 import com.farzadafi.springbase.model.Student;
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.stereotype.Repository;
 
 import java.util.Optional;
 
-@Repository
 public class JdbcStudentRepository implements StudentRepository {
     private final JdbcTemplate jdbcTemplate;
 
