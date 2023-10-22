@@ -4,3 +4,8 @@ application:
       mode: jdbc
     log:
       enable: true
+
+spring:
+  messages:
+    basename: messages/messages
+    encoding: UTF-8
