@@ -1,0 +1,6 @@
+application:
+  configs:
+    repository:
+      mode: jdbc
+    log:
+      enable: true
