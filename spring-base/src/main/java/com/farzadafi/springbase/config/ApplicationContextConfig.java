@@ -1,5 +1,7 @@
 package com.farzadafi.springbase.config;
 
+import com.farzadafi.springbase.message.MessageService;
+import com.farzadafi.springbase.message.ResourceBundleMessageService;
 import com.farzadafi.springbase.repository.InMemoryStudentRepository;
 import com.farzadafi.springbase.repository.JdbcStudentRepository;
 import com.farzadafi.springbase.repository.StudentRepository;
@@ -8,6 +10,7 @@ import com.farzadafi.springbase.service.StudentService;
 import com.farzadafi.springbase.service.StudentServiceImpel;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
+import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -16,9 +19,11 @@ import org.springframework.jdbc.core.JdbcTemplate;
 public class ApplicationContextConfig {
 
     private final JdbcTemplate jdbcTemplate;
+    private final MessageSource messageSource;
 
-    public ApplicationContextConfig(JdbcTemplate jdbcTemplate) {
+    public ApplicationContextConfig(JdbcTemplate jdbcTemplate, MessageSource messageSource) {
         this.jdbcTemplate = jdbcTemplate;
+        this.messageSource = messageSource;
     }
 
     @Bean
@@ -48,10 +53,15 @@ public class ApplicationContextConfig {
 //    }
 
     @Bean
+    public MessageService messageService() {
+        return new ResourceBundleMessageService(messageSource);
+    }
+
+    @Bean
     StudentService studentService(StudentRepository repository,
                                   @Value("${application.configs.log.enable}") boolean isLogEnabled) {
         StudentService studentService = new StudentServiceImpel((JdbcStudentRepository) repository);
-        if (isLogEnabled) studentService = new LogEnabledStudentService(studentService);
+        if (isLogEnabled) studentService = new LogEnabledStudentService(studentService, messageService());
         return studentService;
     }
 }
