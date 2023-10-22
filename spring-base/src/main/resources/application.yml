@@ -4,6 +4,7 @@ application:
       mode: jdbc
     log:
       enable: true
+    language: fa
 
 spring:
   messages:
