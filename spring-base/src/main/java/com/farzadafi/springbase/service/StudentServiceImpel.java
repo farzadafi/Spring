@@ -7,7 +7,6 @@ import com.farzadafi.springbase.repository.StudentRepository;
 
 public class StudentServiceImpel implements StudentService {
 
-//    private final JdbcStudentRepository repository;
     private final StudentRepository repository;
 
     public StudentServiceImpel(JdbcStudentRepository repository) {
@@ -15,8 +14,7 @@ public class StudentServiceImpel implements StudentService {
     }
 
     @Override
-    public void register(CommonStudent student1) {
-        CommonStudent student = new CommonStudent(null, "farzad", "3033333333");
+    public void register(CommonStudent student) {
         repository.save(student);
     }
 
