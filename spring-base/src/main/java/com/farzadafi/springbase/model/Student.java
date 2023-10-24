@@ -1,16 +1,12 @@
 package com.farzadafi.springbase.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+public interface Student {
+    void setId(Integer id);
+    Integer getId();
 
-@Getter
-@Setter
-@AllArgsConstructor
-@NoArgsConstructor
-public class Student {
-    private Integer id;
-    private String fullName;
-    private String studentNumber;
+    void setFullName(String fullName);
+    String getFullName();
+
+    void setStudentNumber(String studentNumber);
+    String getStudentNumber();
 }
