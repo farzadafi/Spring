@@ -1,13 +1,13 @@
 package com.farzadafi.springbase.repository;
 
-import com.farzadafi.springbase.model.Student;
+import com.farzadafi.springbase.model.common.CommonStudent;
 
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
 
 public class InMemoryStudentRepository implements StudentRepository {
-    private final Map<String, Student> database = new HashMap<>();
+    private final Map<String, CommonStudent> database = new HashMap<>();
 
     @Override
     public boolean existsByStudentNumber(String studentNumber) {
@@ -15,12 +15,12 @@ public class InMemoryStudentRepository implements StudentRepository {
     }
 
     @Override
-    public void save(Student student) {
+    public void save(CommonStudent student) {
         database.put(student.getStudentNumber(), student);
     }
 
     @Override
-    public Optional<Student> findByStudentNumber(String studentNumber) {
+    public Optional<CommonStudent> findByStudentNumber(String studentNumber) {
         return Optional.ofNullable(database.get(studentNumber));
     }
 }
