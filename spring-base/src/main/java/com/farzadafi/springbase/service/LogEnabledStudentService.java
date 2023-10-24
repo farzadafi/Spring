@@ -1,7 +1,7 @@
 package com.farzadafi.springbase.service;
 
 import com.farzadafi.springbase.message.MessageService;
-import com.farzadafi.springbase.model.Student;
+import com.farzadafi.springbase.model.common.CommonStudent;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
@@ -16,7 +16,7 @@ public class LogEnabledStudentService implements StudentService {
     private String language;
 
     @Override
-    public void register(Student student) {
+    public void register(CommonStudent student) {
         log.info(messageService.getMessage("register.successful", language)+ " {}", student);
         service.register(student);
     }
