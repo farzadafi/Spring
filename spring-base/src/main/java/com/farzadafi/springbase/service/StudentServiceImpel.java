@@ -1,5 +1,6 @@
 package com.farzadafi.springbase.service;
 
+import com.farzadafi.springbase.model.Student;
 import com.farzadafi.springbase.model.common.CommonStudent;
 import com.farzadafi.springbase.repository.JdbcStudentRepository;
 import com.farzadafi.springbase.repository.StudentRepository;
@@ -17,5 +18,11 @@ public class StudentServiceImpel implements StudentService {
     public void register(CommonStudent student1) {
         CommonStudent student = new CommonStudent(null, "farzad", "3033333333");
         repository.save(student);
+    }
+
+    @Override
+    public Student findByStudentNumber(String studentNumber) {
+        return repository.findByStudentNumber(studentNumber).orElseThrow(
+                () -> new RuntimeException("not found!"));
     }
 }
