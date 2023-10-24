@@ -1,13 +1,13 @@
 package com.farzadafi.springbase.repository;
 
-import com.farzadafi.springbase.model.Student;
+import com.farzadafi.springbase.model.common.CommonStudent;
 
 import java.util.Optional;
 
 public interface StudentRepository {
     boolean existsByStudentNumber(String studentNumber);
 
-    void save(Student student);
+    void save(CommonStudent student);
 
-    Optional<Student> findByStudentNumber(String studentNumber);
+    Optional<CommonStudent> findByStudentNumber(String studentNumber);
 }
