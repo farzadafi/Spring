@@ -2,9 +2,7 @@ package com.farzadafi.springbase.config;
 
 import com.farzadafi.springbase.message.MessageService;
 import com.farzadafi.springbase.message.ResourceBundleMessageService;
-import com.farzadafi.springbase.repository.InMemoryStudentRepository;
-import com.farzadafi.springbase.repository.JdbcStudentRepository;
-import com.farzadafi.springbase.repository.StudentRepository;
+import com.farzadafi.springbase.repository.*;
 import com.farzadafi.springbase.service.LogEnabledStudentService;
 import com.farzadafi.springbase.service.StudentService;
 import com.farzadafi.springbase.service.StudentServiceImpel;
@@ -13,6 +11,7 @@ import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.jdbc.core.JdbcTemplate;
 
 @Configuration
@@ -42,15 +41,15 @@ public class ApplicationContextConfig {
         return new JdbcStudentRepository(jdbcTemplate);
     }
 
-//    @Configuration
-//    @EnableJpaRepositories(basePackages = "ir.maktab.springboot.repository")
-//    @ConditionalOnProperty(prefix = "application.configs.repository", name = "mode", havingValue = "jpa")
-//    public static class JpaConfig {
-//        @Bean
-//        StudentRepository jpaStudentRepository(StudentJpaRepository jpaRepository) {
-//            return new JpaStudentRepository(jpaRepository);
-//        }
-//    }
+    @Configuration
+    @EnableJpaRepositories(basePackages = "com.farzadafi.springbase.repository")
+    @ConditionalOnProperty(prefix = "application.configs.repository", name = "mode", havingValue = "jpa")
+    public static class JpaConfig {
+        @Bean
+        StudentRepository jpaStudentRepository(StudentJpaRepository jpaRepository) {
+            return new JpaStudentRepository(jpaRepository);
+        }
+    }
 
     @Bean
     public MessageService messageService() {
