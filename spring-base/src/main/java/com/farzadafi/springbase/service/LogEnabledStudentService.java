@@ -1,6 +1,7 @@
 package com.farzadafi.springbase.service;
 
 import com.farzadafi.springbase.message.MessageService;
+import com.farzadafi.springbase.model.Student;
 import com.farzadafi.springbase.model.common.CommonStudent;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -19,5 +20,11 @@ public class LogEnabledStudentService implements StudentService {
     public void register(CommonStudent student) {
         log.info(messageService.getMessage("register.successful", language)+ " {}", student);
         service.register(student);
+    }
+
+    @Override
+    public Student findByStudentNumber(String studentNumber) {
+        log.info(messageService.getMessage("find.user.student.number", language)+ " {}", studentNumber);
+        return service.findByStudentNumber(studentNumber);
     }
 }
