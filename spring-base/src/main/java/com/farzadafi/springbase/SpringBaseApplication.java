@@ -1,6 +1,6 @@
 package com.farzadafi.springbase;
 
-import com.farzadafi.springbase.model.Student;
+import com.farzadafi.springbase.model.common.CommonStudent;
 import com.farzadafi.springbase.service.StudentService;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -15,6 +15,6 @@ public class SpringBaseApplication {
 
     @Bean
     CommandLineRunner commandLineRunner (StudentService studentService){
-        return args -> studentService.register(new Student(null, null, null));
+        return args -> studentService.register(new CommonStudent(null, null, null));
     }
 }
