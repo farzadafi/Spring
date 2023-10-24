@@ -1,6 +1,6 @@
 package com.farzadafi.springbase.repository;
 
-import com.farzadafi.springbase.model.Student;
+import com.farzadafi.springbase.model.common.CommonStudent;
 import org.springframework.jdbc.core.JdbcTemplate;
 
 import java.util.Optional;
@@ -28,7 +28,7 @@ public class JdbcStudentRepository implements StudentRepository {
     }
 
     @Override
-    public void save(Student student) {
+    public void save(CommonStudent student) {
         String sql = """
                 insert into student(name, student_number)
                 values (?, ?)
@@ -41,7 +41,7 @@ public class JdbcStudentRepository implements StudentRepository {
     }
 
     @Override
-    public Optional<Student> findByStudentNumber(String studentNumber) {
+    public Optional<CommonStudent> findByStudentNumber(String studentNumber) {
         String sql = """
                 select name,student_number
                 from student
@@ -49,13 +49,13 @@ public class JdbcStudentRepository implements StudentRepository {
                 """;
         return jdbcTemplate.query(
                         sql,
-                        (rs, rowNum) -> new Student(null,
+                        (rs, rowNum) -> new CommonStudent(null,
                                 rs.getString("name"),
                                 rs.getString("student_number")
                         ),
                         studentNumber)
                 .stream()
-                .map(Student.class::cast)
+                .map(CommonStudent.class::cast)
                 .findFirst();
     }
 }
