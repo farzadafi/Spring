@@ -1,4 +1,7 @@
 package com.farzadafi.springbase.repository;
 
-public interface StudentJpaRepository {
+import com.farzadafi.springbase.model.Student;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface StudentJpaRepository extends JpaRepository<Student, Integer> {
 }
