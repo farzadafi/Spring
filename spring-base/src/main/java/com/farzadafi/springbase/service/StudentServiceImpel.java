@@ -20,7 +20,6 @@ public class StudentServiceImpel implements StudentService {
 
     @Override
     public Student findByStudentNumber(String studentNumber) {
-        return repository.findByStudentNumber(studentNumber).orElseThrow(
-                () -> new RuntimeException("not found!"));
+        return repository.findByStudentNumber(studentNumber);
     }
 }

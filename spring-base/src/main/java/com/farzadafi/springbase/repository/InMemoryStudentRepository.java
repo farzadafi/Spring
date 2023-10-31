@@ -20,7 +20,7 @@ public class InMemoryStudentRepository implements StudentRepository {
     }
 
     @Override
-    public Optional<CommonStudent> findByStudentNumber(String studentNumber) {
-        return Optional.ofNullable(database.get(studentNumber));
+    public CommonStudent findByStudentNumber(String studentNumber) {
+        return Optional.ofNullable(database.get(studentNumber)).get();
     }
 }
