@@ -1,7 +1,7 @@
 application:
   configs:
     repository:
-      mode: jdbc
+      mode: jpa
     log:
       enable: true
     language: fa
