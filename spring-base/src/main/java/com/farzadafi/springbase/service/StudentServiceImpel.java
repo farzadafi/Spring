@@ -2,14 +2,13 @@ package com.farzadafi.springbase.service;
 
 import com.farzadafi.springbase.model.Student;
 import com.farzadafi.springbase.model.common.CommonStudent;
-import com.farzadafi.springbase.repository.JdbcStudentRepository;
 import com.farzadafi.springbase.repository.StudentRepository;
 
 public class StudentServiceImpel implements StudentService {
 
     private final StudentRepository repository;
 
-    public StudentServiceImpel(JdbcStudentRepository repository) {
+    public StudentServiceImpel(StudentRepository repository) {
         this.repository = repository;
     }
 
