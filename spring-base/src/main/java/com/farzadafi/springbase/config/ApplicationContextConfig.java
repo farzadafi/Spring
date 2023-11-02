@@ -59,7 +59,7 @@ public class ApplicationContextConfig {
     @Bean
     StudentService studentService(StudentRepository repository,
                                   @Value("${application.configs.log.enable}") boolean isLogEnabled) {
-        StudentService studentService = new StudentServiceImpel((JdbcStudentRepository) repository);
+        StudentService studentService = new StudentServiceImpel(repository);
         if (isLogEnabled) studentService = new LogEnabledStudentService(studentService, messageService());
         return studentService;
     }
